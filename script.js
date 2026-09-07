@@ -20,9 +20,7 @@ const subjects = [
 ];
 
 /* ----------------------------------------------------------------
-   Master Sheet-এর CLASS values-এর সাথে হুবহু মিলিয়ে লেখা লজিক্যাল অর্ডার।
-   এই লিস্টে না থাকা কোনো ক্লাস থাকলে সেটা তালিকার শেষে চলে যাবে
-   (তখনও alphabetically সাজানো থাকবে যাতে হারিয়ে না যায়)।
+  
 ---------------------------------------------------------------- */
 const CLASS_ORDER = [
   'NUR_A', 'NUR_B',
@@ -46,11 +44,7 @@ function classSortIndex(cls) {
 }
 
 /* ----------------------------------------------------------------
-   ★★★ CRITICAL FIX ★★★
-   Sheet-এর কোনো ঘরে "N" (Not Applicable) বা খালি/অসংখ্যাসূচক কিছু
-   থাকলে সাধারণ Number() সেটাকে NaN বানিয়ে দেয়, আর একবার NaN যোগ হলে
-   পুরো total/percentage/grade সব NaN হয়ে যায় (নিচের দিকে ছড়িয়ে পড়ে)।
-   safeNum() সবসময় একটা সংখ্যা ফেরত দেবে — অসংখ্যাসূচক কিছু পেলে 0.
+  
 ---------------------------------------------------------------- */
 function safeNum(val) {
   const n = Number(val);
@@ -136,7 +130,7 @@ document.getElementById('classSelect').addEventListener('change', function () {
   const signImg = document.getElementById('classTeacherSign');
   if (signImg) {
     if (cls && signatureMap[cls]) {
-      signImg.src = `Signatures/${signatureMap[cls]}`;
+      signImg.src = `Images/${signatureMap[cls]}`;
       signImg.style.display = 'block';
     } else {
       signImg.style.display = 'none';
@@ -150,7 +144,6 @@ document.getElementById('classSelect').addEventListener('change', function () {
 
   const students = allStudents.filter(s => String(s.CLASS) === String(cls));
 
-  // Roll Number অনুযায়ী ascending sort (alphabetical নয়)
   students.sort((a, b) => safeNum(a.ROLL) - safeNum(b.ROLL));
 
   students.forEach(student => {
