@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SHRIPUR RESULT PORTAL</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style>
+    :root {
+      --gold: #b79a52;
+      --gold-dark: #816a32;
+      --green: #1e5a3d;
+      --green-dark: #15452f;
+      --mint: #d7e8df;
+      --mint-soft: #eff7f2;
+      --line: #a9c5b6;
+      --ink: #1d2721;
+      --paper: #fffefb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 10px;
+      color: var(--ink);
+      font-family: "Poppins", sans-serif;
+      background:
+        radial-gradient(circle at 4% 3%, rgba(205, 233, 219, 0.75), transparent 30%),
+        radial-gradient(circle at 96% 97%, rgba(242, 217, 159, 0.45), transparent 33%),
+        linear-gradient(180deg, #edf5f0 0%, #f7faf8 55%, #f4eee3 100%);
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    button {
+      touch-action: manipulation;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .portal {
+      width: min(100%, 480px);
+      margin: 0 auto 18px;
+      padding: 21px 18px;
+      text-align: center;
+      border: 1px solid #c7dcd0;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 8px 24px rgba(30, 69, 49, 0.10);
+    }
+
+    .logo {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 9px;
+      object-fit: contain;
+    }
+
+    .portal h1 {
+      color: var(--gold-dark);
+      font-family: "Cinzel", serif;
+      font-size: clamp(16px, 4.7vw, 20px);
+      font-weight: 800;
+      line-height: 1.28;
+      letter-spacing: 0.25px;
+    }
+
+    .portal h2 {
+      margin: 5px 0 16px;
+      color: #56635c;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    select {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 40px 12px 12px;
+      color: #243129;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      text-align-last: center;
+      cursor: pointer;
+      outline: none;
+      border: 1px solid #b1d0bf;
+      border-radius: 9px;
+      appearance: none;
+      background-color: #fbfdfc;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231e5a3d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      transition: 0.2s ease;
+    }
+
+    select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(30, 90, 61, 0.14);
+    }
+
+    select:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    .portal button {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 0;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #2d7954, #184a32);
+      box-shadow: 0 5px 13px rgba(30, 90, 61, 0.22);
+    }
+
+    .portal button:active:not(:disabled) {
+      transform: scale(0.985);
+    }
+
+    .portal button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    .loader {
+      padding: 15px 10px;
+      color: #506057;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .spinner {
+      width: 30px;
+      height: 30px;
+      margin: 0 auto 9px;
+      border: 3px solid #e1ece6;
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .error {
+      margin-bottom: 12px;
+      padding: 10px;
+      color: #a22222;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      border: 1px solid #f5b7b7;
+      border-radius: 8px;
+      background: #fff0f0;
+    }
+
+    .marksheet-outer {
+      width: min(100%, 760px);
+      margin: 0 auto 18px;
+      padding: 6px;
+      border-radius: 3px;
+      background: #fff;
+      box-shadow: 0 9px 26px rgba(0, 0, 0, 0.14);
+    }
+
+    .marksheet {
+      position: relative;
+      overflow: hidden;
+      padding: 21px;
+      border: 2px solid var(--gold);
+      outline: 1px solid var(--gold);
+      outline-offset: -6px;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.87), rgba(255, 255, 255, 0.94)),
+        linear-gradient(135deg, #dff1e8 0%, #fff 45%, #faefd4 100%);
+    }
+
+    .marksheet::before,
+    .marksheet::after {
+      position: absolute;
+      z-index: 0;
+      width: 165px;
+      height: 165px;
+      content: "";
+      pointer-events: none;
+      opacity: 0.40;
+    }
+
+    .marksheet::before {
+      top: -58px;
+      left: -58px;
+      transform: rotate(28deg);
+      background: linear-gradient(135deg, #a5d8c1, transparent 68%);
+    }
+
+    .marksheet::after {
+      right: -60px;
+      bottom: -65px;
+      transform: rotate(28deg);
+      background: linear-gradient(315deg, #eacd7d, transparent 68%);
+    }
+
+    .marksheet > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr) 54px;
+      gap: 9px;
+      align-items: center;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .header-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .header-qr {
+      width: 52px;
+      height: 52px;
+      padding: 2px;
+      object-fit: contain;
+      border: 1px solid #c3cec7;
+      border-radius: 2px;
+      background: white;
+    }
+
+    .header-center h1 {
+      color: var(--gold-dark);
+      font-family: "Cinzel", serif;
+      font-size: clamp(15px, 3.1vw, 21px);
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: 0.3px;
+    }
+
+    .header-center h2 {
+      margin: 4px 0 6px;
+      color: #29352e;
+      font-size: clamp(9px, 1.9vw, 12px);
+      font-weight: 700;
+    }
+
+    .banner {
+      display: inline-block;
+      padding: 4px 21px;
+      color: white;
+      font-size: clamp(9px, 1.9vw, 12px);
+      font-weight: 800;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      background: linear-gradient(135deg, #c7a04c, #a67c29);
+      box-shadow: 0 2px 5px rgba(83, 57, 10, 0.22);
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 178px;
+      gap: 12px;
+      margin-bottom: 16px;
+      align-items: start;
+    }
+
+    .student-info {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-collapse: collapse;
+    }
+
+    .student-info td {
+      padding: 7px 9px;
+      color: #1a251e;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+    }
+
+    .student-info td:first-child {
+      width: 39%;
+      font-weight: 700;
+      background: var(--mint);
+    }
+
+    .student-info td:last-child {
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .grading-box {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .grading-title {
+      padding: 5px;
+      color: #18221c;
+      font-size: 10px;
+      font-weight: 800;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background: var(--mint);
+    }
+
+    .grading {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5px;
+    }
+
+    .grading th,
+    .grading td {
+      padding: 2px 4px;
+      font-weight: 600;
+      text-align: center;
+      border: 1px solid var(--line);
+    }
+
+    .grading th {
+      font-weight: 800;
+      background: var(--mint-soft);
+    }
+
+    .title {
+      margin: 16px 0 10px;
+      color: #252c27;
+      font-family: "Cinzel", serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .title::before,
+    .title::after {
+      color: var(--gold-dark);
+      content: " 〜 ";
+    }
+
+    .table-wrapper {
+      width: 100%;
+      margin-bottom: 12px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #91b7a2 #e9f2ed;
+    }
+
+    .result-table,
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .result-table {
+      min-width: 625px;
+      font-size: 11px;
+    }
+
+    .summary-table {
+      min-width: 510px;
+      font-size: 11px;
+    }
+
+    .result-table th,
+    .summary-table th {
+      padding: 6px 3px;
+      color: #19221c;
+      font-weight: 800;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid var(--line);
+      background: var(--mint);
+    }
+
+    .result-table td,
+    .summary-table td {
+      padding: 6px 3px;
+      color: #1e2922;
+      font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.93);
+    }
+
+    .result-table td:first-child {
+      min-width: 142px;
+      padding-left: 8px;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .summary-table td {
+      font-size: 12px;
+      font-weight: 800;
+      background: rgba(247, 253, 249, 0.94);
+    }
+
+    .verified {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 13px auto;
+      padding: 6px 10px;
+      color: var(--green-dark);
+      font-size: 11px;
+      font-weight: 800;
+      text-align: center;
+      border: 1px solid #bbdac9;
+      border-radius: 4px;
+      background: rgba(215, 232, 223, 0.90);
+    }
+
+    .verified::before {
+      display: grid;
+      width: 15px;
+      height: 15px;
+      color: white;
+      font-size: 10px;
+      line-height: 1;
+      content: "✓";
+      place-items: center;
+      border-radius: 2px;
+      background: var(--green-dark);
+    }
+
+    .signatures {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 21px;
+      text-align: center;
+    }
+
+    .sign-img {
+      display: block;
+      width: 100%;
+      height: 26px;
+      margin: 0 auto 3px;
+      object-fit: contain;
+    }
+
+    .sign-label {
+      min-height: 22px;
+      padding-top: 3px;
+      color: #3c463f;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1.25;
+      border-top: 1px solid #6b756e;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      padding: 15px 8px 2px;
+    }
+
+    .actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 136px;
+      min-height: 41px;
+      padding: 9px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 0;
+      border-radius: 22px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.10);
+    }
+
+    .actions button:active {
+      transform: scale(0.97);
+    }
+
+    .btn-print {
+      color: #17436b;
+      background: #badaf7;
+    }
+
+    .btn-download {
+      color: #0a5038;
+      background: #b8ebd9;
+    }
+
+    @media (max-width: 550px) {
+      body {
+        padding: 4px;
+      }
+
+      .portal {
+        margin-bottom: 12px;
+        padding: 17px 14px;
+      }
+
+      .marksheet-outer {
+        padding: 4px;
+      }
+
+      .marksheet {
+        padding: 14px 8px;
+        outline-offset: -4px;
+      }
+
+      .header {
+        grid-template-columns: 40px minmax(0, 1fr) 40px;
+        gap: 4px;
+        margin-bottom: 13px;
+      }
+
+      .header-logo,
+      .header-qr {
+        width: 38px;
+        height: 38px;
+      }
+
+      .header-center h1 {
+        font-size: 14px;
+      }
+
+      .header-center h2 {
+        margin: 3px 0 5px;
+        font-size: 8.5px;
+      }
+
+      .banner {
+        padding: 3px 11px;
+        font-size: 9px;
+        letter-spacing: 0.6px;
+      }
+
+      .info-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 13px;
+      }
+
+      .student-info td {
+        padding: 6px;
+        font-size: 10.5px;
+      }
+
+      .grading-box {
+        width: min(100%, 260px);
+        margin: 0 auto;
+      }
+
+      .grading {
+        font-size: 9px;
+      }
+
+      .title {
+        margin: 13px 0 8px;
+        font-size: 11px;
+      }
+
+      .result-table {
+        min-width: 580px;
+        font-size: 9.5px;
+      }
+
+      .summary-table {
+        min-width: 480px;
+        font-size: 9.5px;
+      }
+
+      .result-table th,
+      .result-table td,
+      .summary-table th,
+      .summary-table td {
+        padding: 5px 3px;
+      }
+
+      .result-table td:first-child {
+        min-width: 128px;
+      }
+
+      .summary-table td {
+        font-size: 10px;
+      }
+
+      .verified {
+        padding: 5px 7px;
+        font-size: 9.5px;
+      }
+
+      .signatures {
+        gap: 7px;
+        margin-top: 17px;
+      }
+
+      .sign-img {
+        height: 22px;
+      }
+
+      .sign-label {
+        font-size: 7.5px;
+      }
+
+      .actions {
+        gap: 8px;
+        padding-top: 12px;
+      }
+
+      .actions button {
+        min-width: 130px;
+        min-height: 39px;
+        padding: 8px 14px;
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+
+      body {
+        padding: 0;
+        background: #fff;
+      }
+
+      .portal,
+      .actions {
+        display: none !important;
+      }
+
+      .marksheet-outer {
+        width: 100%;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .marksheet {
+        padding: 13px;
+        border: 1.5px solid var(--gold);
+        outline: none;
+      }
+
+      .table-wrapper {
+        overflow: visible;
+      }
+
+      .result-table,
+      .summary-table {
+        min-width: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="portal">
+    <img
+      src="Images/Logo_Jagat.png"
+      alt="Logo"
+      class="logo"
+      onerror="this.style.display='none'"
+    >
+
+    <h1>SHRIPUR KINDERGARTEN SCHOOL</h1>
+    <h2>2<sup>ND</sup> Summative Evaluation - 2026</h2>
+
+    <div class="loader" id="loader">
+      <div class="spinner"></div>
+      <p>Loading Data...</p>
+    </div>
+
+    <div class="error hidden" id="error"></div>
+
+    <div class="controls" id="controls" style="display:none;">
+      <select id="classSelect" disabled>
+        <option value="">SELECT CLASS</option>
+      </select>
+
+      <select id="studentSelect" disabled>
+        <option value="">SELECT STUDENT</option>
+      </select>
+
+      <button id="viewBtn" disabled>View Result</button>
+    </div>
+  </div>
+
+  <div class="marksheet-outer hidden" id="marksheetOuter">
+    <div class="marksheet" id="marksheet">
+      <div class="header">
+        <img
+          src="Images/Logo_Jagat.png"
+          alt="Logo"
+          class="header-logo"
+          onerror="this.style.display='none'"
+        >
+
+        <div class="header-center">
+          <h1>SHRIPUR KINDERGARTEN SCHOOL</h1>
+          <h2>⚜ 2<sup>nd</sup> Summative Evaluation - 2026 ⚜</h2>
+          <div class="banner">PROGRESS REPORT</div>
+        </div>
+
+        <img
+          src="Images/qr.png"
+          alt="QR"
+          class="header-qr"
+          onerror="this.style.display='none'"
+        >
+      </div>
+
+      <div class="info-row">
+        <table class="student-info">
+          <tr>
+            <td>Student's Name</td>
+            <td id="sName"></td>
+          </tr>
+          <tr>
+            <td>Guardian's Name</td>
+            <td id="gName"></td>
+          </tr>
+          <tr>
+            <td>Class &amp; Section</td>
+            <td id="sClass"></td>
+          </tr>
+          <tr>
+            <td>Roll Number</td>
+            <td id="sRoll"></td>
+          </tr>
+        </table>
+
+        <div class="grading-box">
+          <div class="grading-title">LETTER GRADING</div>
+
+          <table class="grading">
+            <tr>
+              <th>Range</th>
+              <th>Grade</th>
+            </tr>
+            <tr><td>90-100</td><td>AA</td></tr>
+            <tr><td>80-89</td><td>A+</td></tr>
+            <tr><td>60-79</td><td>A</td></tr>
+            <tr><td>45-59</td><td>B+</td></tr>
+            <tr><td>35-44</td><td>B</td></tr>
+            <tr><td>25-34</td><td>C</td></tr>
+            <tr><td>Below 25</td><td>D</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="title">Assessment of Academic Areas</div>
+
+      <div class="table-wrapper">
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th rowspan="2" style="width:27%;">Compulsory Subject</th>
+              <th colspan="3">Full Marks</th>
+              <th colspan="5">Obtained Marks</th>
+            </tr>
+            <tr>
+              <th>Written</th>
+              <th>Oral</th>
+              <th>Total</th>
+              <th>Written</th>
+              <th>Oral</th>
+              <th>Total</th>
+              <th>%</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>ART</th>
+              <th>FM</th>
+              <th>Obt. Marks</th>
+              <th>%</th>
+              <th>Result</th>
+              <th>Grade</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>A<sup>+</sup></td>
+              <td id="fmVal"></td>
+              <td id="obtVal"></td>
+              <td id="pctVal"></td>
+              <td>Pass</td>
+              <td id="gradeVal"></td>
+              <td id="rankVal"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="verified">
+        Verified by- SHRIPUR KINDERGARTEN SCHOOL
+      </div>
+
+      <div class="signatures">
+        <div class="sign-col">
+          <img
+            id="teacherSign"
+            src=""
+            alt="Class Teacher"
+            class="sign-img"
+            onerror="this.style.display='none'"
+          >
+          <div class="sign-label">Class Teacher</div>
+        </div>
+
+        <div class="sign-col">
+          <img
+            src="Images/jagatinfras.png"
+            alt="Jagat Infrastructure"
+            class="sign-img"
+            onerror="this.style.display='none'"
+          >
+          <div class="sign-label">Jagat Infrastructure &amp; Algorithm</div>
+        </div>
+
+        <div class="sign-col">
+          <img
+            src="Images/principal.png"
+            alt="Principal"
+            class="sign-img"
+            onerror="this.style.display='none'"
+          >
+          <div class="sign-label">Principal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-print" onclick="window.print()">🖨 Print</button>
+      <button class="btn-download" onclick="downloadPDF()">📥 Download PDF</button>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbyOnxQqelRC93Xmx61AHsmX3XsB6u3qKK_LtY0miKigHQGwH2fz75Ho1hxy8YoYYsYWQQ/exec";
+
+    const SUBJECTS = [
+      { name: "BENGALI", fm: "FMB", w: "WTB", o: "OLB" },
+      { name: "ENGLISH", fm: "FME", w: "WTE", o: "OLE" },
+      { name: "MATHS", fm: "FMM", w: "WTM", o: "OLM" },
+      { name: "HINDI", fm: "FMHN", w: "WTHN", o: "OLHN" },
+      { name: "COMPUTER", fm: "FMCM", w: "WTCM", o: "OLCM" },
+      { name: "GK", fm: "FMGK", w: "WTGK", o: "OLGK" },
+      { name: "EVS", fm: "FMEV", w: "WTEV", o: "OLEV" },
+      { name: "LSC", fm: "FMLSC", w: "WTLSC", o: "OLLSC" },
+      { name: "PSC", fm: "FMPSC", w: "WTPSC", o: "OLPSC" },
+      { name: "Beng Rhym", fm: "FMRYMB", w: "WTRYMB", o: "OLRYMB" },
+      { name: "Eng Rhym", fm: "FMRYME", w: "WTRYME", o: "OLRYME" },
+      { name: "HISTORY", fm: "FMHS", w: "WTHS", o: "OLHS" },
+      { name: "GEOGRAPHY", fm: "FMG", w: "WTG", o: "OLG" }
+    ];
+
+    const CLASS_ORDER = [
+      "NUR_A",
+      "NUR_B",
+      "LKG_A",
+      "LKG_B",
+      "UKG_A",
+      "UKG_B",
+      "I (A)",
+      "I (B)",
+      "II (Two)",
+      "III (Three)",
+      "IV (Four)",
+      "V (Five)",
+      "VI (Six)",
+      "VII (Seven)",
+      "VIII (Eight)",
+      "IX (Nine)",
+      "X (Ten)"
+    ];
+
+    const SIGN_MAP = {
+      "NUR_A": "nura.png",
+      "NUR_B": "nurb.png",
+      "LKG_A": "lkga.png",
+      "LKG_B": "lkgb.png",
+      "UKG_A": "ukga.png",
+      "UKG_B": "ukgb.png",
+      "I (A)": "ia.png",
+      "I (B)": "ib.png",
+      "II (Two)": "iia.png",
+      "III (Three)": "iiia.png",
+      "IV (Four)": "iva.png",
+      "V (Five)": "va.png",
+      "VI (Six)": "via.png",
+      "VII (Seven)": "viia.png",
+      "VIII (Eight)": "viiia.png",
+      "IX (Nine)": "jagatinfras.png",
+      "X (Ten)": "jagatinfras.png"
+    };
+
+    let students = [];
+
+    function n(v) {
+      return isNaN(Number(v)) ? 0 : Number(v);
+    }
+
+    function grade(p) {
+      if (p >= 90) return "AA";
+      if (p >= 80) return "A+";
+      if (p >= 60) return "A";
+      if (p >= 45) return "B+";
+      if (p >= 35) return "B";
+      if (p >= 25) return "C";
+      return "D";
+    }
+
+    function ord(v) {
+      const n = parseInt(v, 10);
+
+      if (isNaN(n) || v === "-") {
+        return v;
+      }
+
+      const l = n % 10;
+      const l2 = n % 100;
+
+      if (l2 >= 11 && l2 <= 13) {
+        return n + "<sup>th</sup>";
+      }
+
+      if (l === 1) {
+        return n + "<sup>st</sup>";
+      }
+
+      if (l === 2) {
+        return n + "<sup>nd</sup>";
+      }
+
+      if (l === 3) {
+        return n + "<sup>rd</sup>";
+      }
+
+      return n + "<sup>th</sup>";
+    }
+
+    async function loadData() {
+      const loader = document.getElementById("loader");
+      const errorDiv = document.getElementById("error");
+      const controls = document.getElementById("controls");
+
+      try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+          throw new Error("Data load failed");
+        }
+
+        students = await response.json();
+
+        loader.style.display = "none";
+        controls.style.display = "flex";
+        loadClasses();
+      } catch (err) {
+        loader.style.display = "none";
+        errorDiv.textContent = "Unable to load result data. Please check your connection.";
+        errorDiv.classList.remove("hidden");
+      }
+    }
+
+    function loadClasses() {
+      const sel = document.getElementById("classSelect");
+
+      sel.innerHTML = '<option value="">SELECT CLASS</option>';
+
+      const cls = [
+        ...new Set(
+          students.map(s => s.CLASS).filter(Boolean)
+        )
+      ];
+
+      cls.sort((a, b) => {
+        return CLASS_ORDER.indexOf(a) - CLASS_ORDER.indexOf(b);
+      });
+
+      cls.forEach(c => {
+        const o = document.createElement("option");
+        o.value = c;
+        o.textContent = c;
+        sel.appendChild(o);
+      });
+
+      sel.disabled = false;
+    }
+
+    document.getElementById("classSelect").addEventListener("change", function () {
+      const cls = this.value;
+      const sel = document.getElementById("studentSelect");
+
+      sel.innerHTML = '<option value="">SELECT STUDENT</option>';
+
+      if (!cls) {
+        sel.disabled = true;
+        document.getElementById("viewBtn").disabled = true;
+        return;
+      }
+
+      const studs = students
+        .filter(s => String(s.CLASS) === String(cls))
+        .sort((a, b) => n(a.ROLL) - n(b.ROLL));
+
+      studs.forEach(s => {
+        const o = document.createElement("option");
+        o.value = s.I_D;
+        o.textContent = s.STUDENTS_NAME || "Unknown";
+        sel.appendChild(o);
+      });
+
+      sel.disabled = false;
+      document.getElementById("viewBtn").disabled = false;
+    });
+
+    document.getElementById("viewBtn").addEventListener("click", function () {
+      const id = document.getElementById("studentSelect").value;
+
+      if (!id) {
+        return;
+      }
+
+      const stu = students.find(s => String(s.I_D) === String(id));
+
+      if (!stu) {
+        return;
+      }
+
+      render(stu);
+    });
+
+    function render(stu) {
+      const cls = stu.CLASS;
+
+      document.getElementById("sName").textContent =
+        stu.STUDENTS_NAME || "";
+
+      document.getElementById("gName").textContent =
+        stu.FATHERS_NAME || "";
+
+      document.getElementById("sClass").textContent =
+        cls || "";
+
+      document.getElementById("sRoll").textContent =
+        stu.ROLL || "";
+
+      const t = SIGN_MAP[cls];
+
+      if (t) {
+        const signImg = document.getElementById("teacherSign");
+        signImg.src = "Images/" + t;
+        signImg.style.display = "block";
+      }
+
+      const tbody = document.getElementById("tbody");
+
+      tbody.innerHTML = "";
+
+      let fm = 0;
+      let obt = 0;
+
+      SUBJECTS.forEach(sub => {
+        const fmv = n(stu[sub.fm]);
+
+        if (fmv <= 0) {
+          return;
+        }
+
+        const wv = n(stu[sub.w]);
+        const ov = n(stu[sub.o]);
+        const tv = wv + ov;
+        const pct = (tv / fmv) * 100;
+        const gr = grade(pct);
+
+        const fmOral = fmv >= 50 ? 10 : (fmv >= 20 ? 5 : 0);
+        const fmWritten = fmv - fmOral;
+
+        fm += fmv;
+        obt += tv;
+
+        const r = document.createElement("tr");
+
+        r.innerHTML = `
+          <td>${sub.name}</td>
+          <td>${fmWritten}</td>
+          <td>${fmOral}</td>
+          <td>${fmv}</td>
+          <td>${wv}</td>
+          <td>${ov}</td>
+          <td>${tv}</td>
+          <td>${pct.toFixed(2)}%</td>
+          <td>${gr}</td>
+        `;
+
+        tbody.appendChild(r);
+      });
+
+      const totPct = fm > 0 ? (obt / fm) * 100 : 0;
+      const totGr = grade(totPct);
+
+      const ranks = students
+        .filter(s => String(s.CLASS) === String(cls))
+        .map(s => {
+          let t = 0;
+
+          SUBJECTS.forEach(sub => {
+            const fv = n(s[sub.fm]);
+
+            if (fv > 0) {
+              t += n(s[sub.w]) + n(s[sub.o]);
+            }
+          });
+
+          return {
+            id: s.I_D,
+            t: t
+          };
+        })
+        .sort((a, b) => b.t - a.t);
+
+      let rank = 1;
+
+      for (let i = 0; i < ranks.length; i++) {
+        if (i > 0 && ranks[i].t < ranks[i - 1].t) {
+          rank = i + 1;
+        }
+
+        if (String(ranks[i].id) === String(stu.I_D)) {
+          break;
+        }
+      }
+
+      document.getElementById("fmVal").textContent = fm;
+      document.getElementById("obtVal").textContent = obt;
+      document.getElementById("pctVal").textContent =
+        totPct.toFixed(2) + "%";
+      document.getElementById("gradeVal").textContent = totGr;
+      document.getElementById("rankVal").innerHTML = ord(rank);
+
+      document
+        .getElementById("marksheetOuter")
+        .classList
+        .remove("hidden");
+
+      setTimeout(() => {
+        document
+          .getElementById("marksheetOuter")
+          .scrollIntoView({
+            behavior: "smooth"
+          });
+      }, 100);
+    }
+
+    function downloadPDF() {
+      const el = document.getElementById("marksheet");
+
+      const nm =
+        document.getElementById("sName").textContent ||
+        "Result";
+
+      const opt = {
+        margin: 3,
+        filename: nm + ".pdf",
+        image: {
+          type: "jpeg",
+          quality: 1
+        },
+        html2canvas: {
+          scale: 2,
+          useCORS: true
+        },
+        jsPDF: {
+          unit: "mm",
+          format: "a4",
+          orientation: "portrait"
+        }
+      };
+
+      html2pdf()
+        .set(opt)
+        .from(el)
+        .save();
+    }
+
+    window.onload = loadData;
+  </script>
+</body>
+</html>
