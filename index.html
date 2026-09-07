@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SHRIPUR RESULT PORTAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Mint Green to Light Cream/Ghii Gradient */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #e8f4ec 0%, #f4f8f3 40%, #faf6ee 100%);
+      padding: 12px 6px;
+      color: #222;
+      min-height: 100vh;
+    }
+
+    /* ==================== SEARCH PORTAL ==================== */
+    .portal {
+      max-width: 480px;
+      margin: 0 auto 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      text-align: center;
+      border: 1px solid #b2d3bf;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 10px;
+      display: block;
+    }
+
+    .portal h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      color: #7a622a;
+      margin-bottom: 2px;
+      font-weight: 700;
+    }
+
+    .portal h2 {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #b3d1c0;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #222;
+      background: #fbfdfc;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      text-align: center;
+      text-align-last: center;
+      outline: none;
+    }
+
+    .portal button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #1e5238;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .loader { text-align: center; padding: 10px; color: #555; font-size: 13px; }
+    .spinner {
+      width: 28px; height: 28px;
+      border: 3px solid #e0e0e0; border-top-color: #1e5238;
+      border-radius: 50%; margin: 0 auto 8px;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error {
+      background: #fde8e8; border: 1px solid #f8b4b4;
+      border-radius: 6px; padding: 10px; color: #c81e1e;
+      font-size: 12px; margin-bottom: 12px; text-align: center;
+    }
+
+    .hidden { display: none !important; }
+
+    /* ==================== MARKSHEET CARD (ELEGANT DESIGN) ==================== */
+    .marksheet-outer {
+      max-width: 750px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 6px;
+      border-radius: 2px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .marksheet {
+      background: #fffdfa;
+      padding: 20px;
+      border: 2px solid #ba9e52; /* Gold Outer Border */
+      outline: 2px solid #ba9e52;
+      outline-offset: -6px;
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      display: grid;
+      grid-template-columns: 55px 1fr 55px;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .header-logo { width: 55px; height: 55px; margin: 0 auto; }
+
+    .header-center h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 21px;
+      color: #1e293b;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .header-center h2 {
+      font-size: 12px;
+      color: #444;
+      font-weight: 600;
+      margin: 4px 0 8px;
+    }
+
+    /* Elegant Ribbon Banner */
+    .banner-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    .banner {
+      position: relative;
+      background: linear-gradient(180deg, #991b1b 0%, #7f1d1d 100%);
+      color: #ffffff;
+      padding: 4px 28px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      text-transform: uppercase;
+    }
+
+    .header-qr { width: 52px; height: 52px; border: 1px solid #ccc; padding: 2px; background: white; margin: 0 auto; }
+
+    /* Student Info & Letter Grading Side-by-Side */
+    .info-row {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .student-info {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #9bbca8;
+    }
+
+    .student-info td {
+      padding: 6px 10px;
+      border: 1px solid #9bbca8;
+      font-size: 12px;
+    }
+
+    .student-info td:first-child {
+      background: #d1e5d8; /* Mint Header Column */
+      font-weight: 600;
+      color: #111;
+      width: 38%;
+    }
+
+    .student-info td:last-child {
+      font-weight: 700;
+      color: #111;
+      background: #ffffff;
+    }
+
+    .grading-box {
+      border: 1px solid #9bbca8;
+      background: white;
+    }
+
+    .grading-title {
+      font-size: 10px;
+      font-weight: 700;
+      background: #d1e5d8;
+      color: #111;
+      padding: 4px;
+      text-align: center;
+      border-bottom: 1px solid #9bbca8;
+    }
+
+    .grading {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 10px;
+    }
+
+    .grading th, .grading td {
+      padding: 2px 4px;
+      border: 1px solid #9bbca8;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .grading th { background: #eef5f1; }
+
+    /* Assessment Title */
+    .title {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #222;
+      margin: 14px 0 10px;
+    }
+
+    .title::before, .title::after { content: ' 〜 '; color: #ba9e52; }
+
+    /* Main Result Table */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 12px;
+    }
+
+    .result-table, .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #9bbca8;
+      font-size: 11.5px;
+    }
+
+    .result-table th, .summary-table th {
+      background: #d1e5d8;
+      color: #111;
+      border: 1px solid #9bbca8;
+      padding: 6px 3px;
+      font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .result-table td, .summary-table td {
+      border: 1px solid #9bbca8;
+      padding: 6px 3px;
+      text-align: center;
+      vertical-align: middle;
+      background: #ffffff;
+      font-weight: 600;
+    }
+
+    .result-table td:first-child {
+      text-align: left;
+      padding-left: 8px;
+      font-weight: 700;
+    }
+
+    /* Blank Column Style */
+    .blank-col {
+      width: 14px;
+      min-width: 14px;
+      background: #f2f7f4 !important;
+      border-left: 1px solid #9bbca8 !important;
+      border-right: 1px solid #9bbca8 !important;
+    }
+
+    /* Highlighted Obtained Marks Column Style */
+    .obt-td {
+      font-weight: 800 !important;
+      font-size: 12.5px !important;
+      color: #000000 !important;
+      background-color: #fffdf2 !important; /* Soft golden highlight */
+    }
+
+    .obt-total-td {
+      font-weight: 800 !important;
+      font-size: 13px !important;
+      color: #000000 !important;
+      background-color: #fef9e3 !important; /* Stronger highlight for total */
+    }
+
+    /* Verified Box */
+    .verified {
+      text-align: center;
+      background: #d1e5d8;
+      padding: 5px;
+      border-radius: 3px;
+      margin: 12px 0;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #1e5238;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .verified::before {
+      content: '✔';
+      background: #1e5238;
+      color: white;
+      font-size: 9px;
+      padding: 1px 3px;
+      border-radius: 2px;
+    }
+
+    /* Signatures */
+    .signatures {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .sign-img {
+      height: 26px;
+      object-fit: contain;
+      margin: 0 auto 3px;
+      display: block;
+    }
+
+    .sign-label {
+      border-top: 1px solid #666;
+      padding-top: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* Buttons */
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 16px;
+    }
+
+    .actions button {
+      padding: 8px 24px;
+      font-size: 12.5px;
+      font-weight: 600;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+
+    .btn-print { background: #badaf7; color: #17436b; }
+    .btn-download { background: #b8ebd9; color: #0a4d37; }
+
+    /* Mobile Scaling Protection */
+    @media (max-width: 600px) {
+      body { padding: 4px 2px; }
+      .marksheet { padding: 12px 6px; outline-offset: -4px; }
+      .header { grid-template-columns: 42px 1fr 42px; }
+      .header-logo, .header-qr { width: 42px; height: 42px; }
+      .header-center h1 { font-size: 15px; }
+      .header-center h2 { font-size: 10px; }
+      .banner { font-size: 11px; padding: 3px 18px; }
+      .info-row { grid-template-columns: 1fr 145px; gap: 6px; }
+      .student-info td { font-size: 10px; padding: 4px 5px; }
+      .grading-title, .grading th, .grading td { font-size: 9px; padding: 2px; }
+      .result-table, .summary-table { font-size: 10px; }
+      .obt-td { font-size: 11px !important; }
+      .obt-total-td { font-size: 11.5px !important; }
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .portal, .actions { display: none; }
+      .marksheet-outer { padding: 0; box-shadow: none; }
+      .marksheet { border: 1.5px solid #ba9e52; outline: none; }
+      .table-wrapper { overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SEARCH PORTAL -->
+<div class="portal">
+  <img src="Images/Logo_Jagat.png" alt="Logo" class="logo" onerror="this.style.display='none'">
+  <h1>SHRIPUR KINDERGARTEN SCHOOL</h1>
+  <h2>2<sup>ND</sup> Summative Evaluation - 2026</h2>
+
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+    <p>Loading Data...</p>
+  </div>
+
+  <div class="error hidden" id="error"></div>
+
+  <div class="controls" id="controls" style="display:none;">
+    <select id="classSelect" disabled>
+      <option value="">SELECT CLASS</option>
+    </select>
+
+    <select id="studentSelect" disabled>
+      <option value="">SELECT STUDENT</option>
+    </select>
+
+    <button id="viewBtn" disabled>View Result</button>
+  </div>
+</div>
+
+<!-- MARKSHEET CARD -->
+<div class="marksheet-outer hidden" id="marksheetOuter">
+  <div class="marksheet" id="marksheet">
+    <div class="header">
+      <img src="Images/Logo_Jagat.png" alt="Logo" class="header-logo" onerror="this.style.display='none'">
+      <div class="header-center">
+        <h1>SHRIPUR KINDERGARTEN SCHOOL</h1>
+        <h2>2<sup>nd</sup> Summative Evaluation - 2026</h2>
+        <div class="banner-wrapper">
+          <div class="banner">PROGRESS REPORT</div>
+        </div>
+      </div>
+      <img src="Images/qr.png" alt="QR" class="header-qr" onerror="this.style.display='none'">
+    </div>
+
+    <div class="info-row">
+      <table class="student-info">
+        <tr><td>Student's Name</td><td id="sName"></td></tr>
+        <tr><td>Guardian's Name</td><td id="gName"></td></tr>
+        <tr><td>Class & Section</td><td id="sClass"></td></tr>
+        <tr><td>Roll Number</td><td id="sRoll"></td></tr>
+      </table>
+
+      <div class="grading-box">
+        <div class="grading-title">LETTER GRADING</div>
+        <table class="grading">
+          <tr><th>Range</th><th>Grade</th></tr>
+          <tr><td>90-100</td><td>AA</td></tr>
+          <tr><td>80-89</td><td>A+</td></tr>
+          <tr><td>60-79</td><td>A</td></tr>
+          <tr><td>45-59</td><td>B+</td></tr>
+          <tr><td>35-44</td><td>B</td></tr>
+          <tr><td>25-34</td><td>C</td></tr>
+          <tr><td>Below 25</td><td>D</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="title">Assessment of Academic Areas</div>
+
+    <!-- MAIN RESULT TABLE WITH BLANK COLUMN AND HIGHLIGHTED OBTAINED MARKS -->
+    <div class="table-wrapper">
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th rowspan="2" style="width: 25%;">Compulsory Subject</th>
+            <th colspan="3">Full Marks</th>
+            <th rowspan="2" class="blank-col"></th> <!-- Empty Column -->
+            <th colspan="5">Obtained Marks</th>
+          </tr>
+          <tr>
+            <th>Written</th>
+            <th>Oral</th>
+            <th>Total</th>
+            <th>Written</th>
+            <th>Oral</th>
+            <th>Total</th>
+            <th>%</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>ART</th>
+            <th>FM</th>
+            <th>Obt. Marks</th>
+            <th>%</th>
+            <th>Result</th>
+            <th>Grade</th>
+            <th>Rank</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A<sup>+</sup></td>
+            <td id="fmVal"></td>
+            <td id="obtVal" style="font-weight: 800; background: #fffdf2;"></td>
+            <td id="pctVal"></td>
+            <td>Pass</td>
+            <td id="gradeVal"></td>
+            <td id="rankVal"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="verified">Verified by- SHRIPUR KINDERGARTEN SCHOOL</div>
+
+    <div class="signatures">
+      <div class="sign-col">
+        <img id="teacherSign" src="" alt="Class Teacher" class="sign-img" onerror="this.style.display='none'">
+        <div class="sign-label">Class Teacher</div>
+      </div>
+      <div class="sign-col">
+        <img src="Images/jagatinfras.png" alt="Jagat Infrastructure" class="sign-img" onerror="this.style.display='none'">
+        <div class="sign-label">Jagat Infrastructure & Algorithm</div>
+      </div>
+      <div class="sign-col">
+        <img src="Images/principal.png" alt="Principal" class="sign-img" onerror="this.style.display='none'">
+        <div class="sign-label">Principal</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-print" onclick="window.print()">🖨 Print</button>
+    <button class="btn-download" onclick="downloadPDF()">📥 Download PDF</button>
+  </div>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbyOnxQqelRC93Xmx61AHsmX3XsB6u3qKK_LtY0miKigHQGwH2fz75Ho1hxy8YoYYsYWQQ/exec";
+
+const SUBJECTS = [
+  { name: 'BENGALI', fm: 'FMB', w: 'WTB', o: 'OLB' },
+  { name: 'ENGLISH', fm: 'FME', w: 'WTE', o: 'OLE' },
+  { name: 'MATHS', fm: 'FMM', w: 'WTM', o: 'OLM' },
+  { name: 'HINDI', fm: 'FMHN', w: 'WTHN', o: 'OLHN' },
+  { name: 'COMPUTER', fm: 'FMCM', w: 'WTCM', o: 'OLCM' },
+  { name: 'GK', fm: 'FMGK', w: 'WTGK', o: 'OLGK' },
+  { name: 'EVS', fm: 'FMEV', w: 'WTEV', o: 'OLEV' },
+  { name: 'LSC', fm: 'FMLSC', w: 'WTLSC', o: 'OLLSC' },
+  { name: 'PSC', fm: 'FMPSC', w: 'WTPSC', o: 'OLPSC' },
+  { name: 'Beng Rhym', fm: 'FMRYMB', w: 'WTRYMB', o: 'OLRYMB' },
+  { name: 'Eng Rhym', fm: 'FMRYME', w: 'WTRYME', o: 'OLRYME' },
+  { name: 'HISTORY', fm: 'FMHS', w: 'WTHS', o: 'OLHS' },
+  { name: 'GEOGRAPHY', fm: 'FMG', w: 'WTG', o: 'OLG' }
+];
+
+const CLASS_ORDER = ['NUR_A', 'NUR_B', 'LKG_A', 'LKG_B', 'UKG_A', 'UKG_B', 'I (A)', 'I (B)', 'II (Two)', 'III (Three)', 'IV (Four)', 'V (Five)', 'VI (Six)', 'VII (Seven)', 'VIII (Eight)', 'IX (Nine)', 'X (Ten)'];
+
+const SIGN_MAP = {
+  "NUR_A": "nura.png", "NUR_B": "nurb.png", "LKG_A": "lkga.png", "LKG_B": "lkgb.png",
+  "UKG_A": "ukga.png", "UKG_B": "ukgb.png", "I (A)": "ia.png", "I (B)": "ib.png",
+  "II (Two)": "iia.png", "III (Three)": "iiia.png", "IV (Four)": "iva.png", "V (Five)": "va.png",
+  "VI (Six)": "via.png", "VII (Seven)": "viia.png", "VIII (Eight)": "viiia.png",
+  "IX (Nine)": "jagatinfras.png", "X (Ten)": "jagatinfras.png"
+};
+
+let students = [];
+
+function n(v) { return isNaN(Number(v)) ? 0 : Number(v); }
+
+function grade(p) {
+  if (p >= 90) return 'AA';
+  if (p >= 80) return 'A+';
+  if (p >= 60) return 'A';
+  if (p >= 45) return 'B+';
+  if (p >= 35) return 'B';
+  if (p >= 25) return 'C';
+  return 'D';
+}
+
+function ord(v) {
+  const n = parseInt(v, 10);
+  if (isNaN(n) || v === '-') return v;
+  const l = n % 10, l2 = n % 100;
+  if (l2 >= 11 && l2 <= 13) return n + '<sup>th</sup>';
+  if (l === 1) return n + '<sup>st</sup>';
+  if (l === 2) return n + '<sup>nd</sup>';
+  if (l === 3) return n + '<sup>rd</sup>';
+  return n + '<sup>th</sup>';
+}
+
+async function loadData() {
+  const loader = document.getElementById('loader');
+  const errorDiv = document.getElementById('error');
+  const controls = document.getElementById('controls');
+
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error('Data load failed');
+    
+    students = await response.json();
+
+    loader.style.display = 'none';
+    controls.style.display = 'flex';
+    loadClasses();
+
+  } catch (err) {
+    loader.style.display = 'none';
+    errorDiv.textContent = '⚠️ Failed to load result data. Please check connection.';
+    errorDiv.classList.remove('hidden');
+  }
+}
+
+function loadClasses() {
+  const sel = document.getElementById('classSelect');
+  sel.innerHTML = '<option value="">SELECT CLASS</option>';
+  
+  const cls = [...new Set(students.map(s => s.CLASS).filter(Boolean))];
+  cls.sort((a, b) => CLASS_ORDER.indexOf(a) - CLASS_ORDER.indexOf(b));
+  
+  cls.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c;
+    o.textContent = c;
+    sel.appendChild(o);
+  });
+  sel.disabled = false;
+}
+
+document.getElementById('classSelect').addEventListener('change', function() {
+  const cls = this.value;
+  const sel = document.getElementById('studentSelect');
+  sel.innerHTML = '<option value="">SELECT STUDENT</option>';
+  
+  if (!cls) {
+    sel.disabled = true;
+    document.getElementById('viewBtn').disabled = true;
+    return;
+  }
+  
+  const studs = students.filter(s => String(s.CLASS) === String(cls)).sort((a, b) => n(a.ROLL) - n(b.ROLL));
+  
+  studs.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s.I_D;
+    o.textContent = s.STUDENTS_NAME || 'Unknown';
+    sel.appendChild(o);
+  });
+  
+  sel.disabled = false;
+  document.getElementById('viewBtn').disabled = false;
+});
+
+document.getElementById('viewBtn').addEventListener('click', function() {
+  const id = document.getElementById('studentSelect').value;
+  if (!id) return;
+  
+  const stu = students.find(s => String(s.I_D) === String(id));
+  if (!stu) return;
+  
+  render(stu);
+});
+
+function render(stu) {
+  const cls = stu.CLASS;
+  
+  document.getElementById('sName').textContent = stu.STUDENTS_NAME || '';
+  document.getElementById('gName').textContent = stu.FATHERS_NAME || '';
+  document.getElementById('sClass').textContent = cls || '';
+  document.getElementById('sRoll').textContent = stu.ROLL || '';
+  
+  const t = SIGN_MAP[cls];
+  if (t) {
+    const signImg = document.getElementById('teacherSign');
+    signImg.src = 'Images/' + t;
+    signImg.style.display = 'block';
+  }
+  
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+  let fm = 0, obt = 0;
+  
+  SUBJECTS.forEach(sub => {
+    const fmv = n(stu[sub.fm]);
+    if (fmv <= 0) return;
+    
+    const wv = n(stu[sub.w]);
+    const ov = n(stu[sub.o]);
+    const tv = wv + ov;
+    const pct = (tv / fmv) * 100;
+    const gr = grade(pct);
+
+    const fmOral = fmv >= 50 ? 10 : (fmv >= 20 ? 5 : 0);
+    const fmWritten = fmv - fmOral;
+    
+    fm += fmv;
+    obt += tv;
+    
+    const r = document.createElement('tr');
+    r.innerHTML = `
+      <td>${sub.name}</td>
+      <td>${fmWritten}</td>
+      <td>${fmOral}</td>
+      <td>${fmv}</td>
+      <td class="blank-col"></td>
+      <td class="obt-td">${wv}</td>
+      <td class="obt-td">${ov}</td>
+      <td class="obt-total-td">${tv}</td>
+      <td class="obt-td">${pct.toFixed(2)}%</td>
+      <td class="obt-td">${gr}</td>
+    `;
+    tbody.appendChild(r);
+  });
+  
+  const totPct = fm > 0 ? (obt / fm) * 100 : 0;
+  const totGr = grade(totPct);
+  const ranks = students.filter(s => String(s.CLASS) === String(cls)).map(s => {
+    let t = 0;
+    SUBJECTS.forEach(sub => { const fv = n(s[sub.fm]); if (fv > 0) t += n(s[sub.w]) + n(s[sub.o]); });
+    return { id: s.I_D, t: t };
+  }).sort((a, b) => b.t - a.t);
+  
+  let rank = 1;
+  for (let i = 0; i < ranks.length; i++) {
+    if (i > 0 && ranks[i].t < ranks[i-1].t) rank = i + 1;
+    if (String(ranks[i].id) === String(stu.I_D)) break;
+  }
+  
+  document.getElementById('fmVal').textContent = fm;
+  document.getElementById('obtVal').textContent = obt;
+  document.getElementById('pctVal').textContent = totPct.toFixed(2) + '%';
+  document.getElementById('gradeVal').textContent = totGr;
+  document.getElementById('rankVal').innerHTML = ord(rank);
+  
+  document.getElementById('marksheetOuter').classList.remove('hidden');
+  setTimeout(() => document.getElementById('marksheetOuter').scrollIntoView({ behavior: 'smooth' }), 100);
+}
+
+function downloadPDF() {
+  const el = document.getElementById('marksheet');
+  const nm = document.getElementById('sName').textContent || 'Result';
+  const opt = { 
+    margin: 3, 
+    filename: nm + '.pdf', 
+    image: { type: 'jpeg', quality: 1 }, 
+    html2canvas: { scale: 2, useCORS: true }, 
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } 
+  };
+  html2pdf().set(opt).from(el).save();
+}
+
+window.onload = loadData;
+</script>
+</body>
+</html>
