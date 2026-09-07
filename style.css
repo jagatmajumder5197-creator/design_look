@@ -60,18 +60,18 @@ body {
 }
 
 .portal-container h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 800;
+  font-family: 'Playfair Display', Google Font;
+  font-size: 18px;
+  font-weight: 700;
   color: var(--navy);
   margin-bottom: 8px;
   letter-spacing: 0.3px;
 }
 
 .portal-container h2 {
-  font-size: 16px;
-  color: var(--maroon);
-  font-weight: 700;
+  font-size: 14px;
+  color: var(--blue);
+  font-weight: 500;
   margin-bottom: 8px;
 }
 
