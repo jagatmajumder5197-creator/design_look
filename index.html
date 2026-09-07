@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>SHRIPUR KINDERGARTEN SCHOOL</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- =========================
+       SEARCH AREA
+  ========================== -->
+
+  <div class="portal-container">
+
+    <img
+      src="Logo_Jagat.png"
+      alt="Jagat Infrastructure & Algorithm Logo"
+      class="portal-logo"
+    >
+
+    <h1>SHRIPUR KINDERGARTEN SCHOOL</h1>
+
+    <h2>Jagat Infrastructure & Algorithm</h2>
+
+    <h3>2<sup>ND</sup> Summative Evaluation - 2026</h3>
+
+    <div class="loader-wrap" id="loaderWrap">
+      <div class="loader"></div>
+      <p>Please wait, Parsing JSON payload...</p>
+    </div>
+
+    <div class="error-box hidden" id="errorBox">
+
+    </div>
+
+    <select id="classSelect" disabled>
+      <option value="">CLASS_SEC</option>
+    </select>
+
+    <select id="studentSelect" disabled>
+      <option value="">STUDENTS_NAME</option>
+    </select>
+
+    <button id="viewResultBtn" disabled>View Result</button>
+
+  </div>
+
+
+  <!-- =========================
+       RESULT CARD
+  ========================== -->
+
+  <div class="result-wrapper hidden" id="resultWrapper">
+
+    <div class="marksheet" id="marksheet">
+
+      <!-- HEADER -->
+      <div class="top-header">
+
+        <div class="header-logo-row">
+
+          <img
+            src="Logo_Jagat.png"
+            alt="Logo"
+            class="marksheet-logo"
+          >
+
+          <div class="header-center">
+
+            <h1>SHRIPUR KINDERGARTEN SCHOOL</h1>
+
+            <h2>2<sup>ND</sup> Summative Evaluation - 2026</h2>
+
+            <h3>PROGRESS REPORT</h3>
+
+          </div>
+
+
+          <img src="Signatures/qr.png" alt="QR Code" class="marksheet-logo">
+
+        </div>
+
+      </div>
+
+      <!-- STUDENT DETAILS + GRADING TABLE (SIDE BY SIDE) -->
+      <div class="top-info-row">
+
+        <div class="student-section">
+
+          <table class="student-table">
+
+            <tr>
+              <td>Student's Name</td>
+              <td id="studentName"></td>
+            </tr>
+
+            <tr>
+              <td>Guardian's Name</td>
+              <td id="fatherName"></td>
+            </tr>
+
+            <tr>
+              <td>Class &amp; Section</td>
+              <td id="studentClass"></td>
+            </tr>
+
+            <tr>
+              <td>Roll Number</td>
+              <td id="rollNumber"></td>
+            </tr>
+
+          </table>
+
+        </div>
+
+        <div class="grading-section">
+
+          <div class="grading-title">Letter Grading</div>
+
+          <table class="grading-table">
+
+            <thead>
+              <tr>
+                <th>Range</th>
+                <th>Grade</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr><td>90-100</td><td>AA</td></tr>
+              <tr><td>80-89</td><td>A+</td></tr>
+              <tr><td>60-79</td><td>A</td></tr>
+              <tr><td>45-59</td><td>B+</td></tr>
+              <tr><td>35-44</td><td>B</td></tr>
+              <tr><td>25-34</td><td>C</td></tr>
+              <tr><td>Below 25</td><td>D</td></tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <!-- SUBJECT TABLE -->
+      <div class="assessment-title">Assessment of Academic Areas</div>
+
+      <table class="result-table">
+
+        <thead>
+
+          <tr>
+            <th rowspan="2">Compulsory Subject</th>
+            <th colspan="3">Full Marks</th>
+            <th colspan="5">Obtained Marks</th>
+          </tr>
+
+          <tr>
+            <th>Written</th>
+            <th>Oral</th>
+            <th>Total</th>
+            <th>Written</th>
+            <th>Oral</th>
+            <th>Total</th>
+            <th>%</th>
+            <th>Grade</th>
+          </tr>
+
+        </thead>
+
+        <tbody id="subjectTableBody"></tbody>
+
+      </table>
+
+      <!-- FINAL RESULT -->
+      <div class="final-summary">
+
+        <table>
+
+          <tr>
+            <th>ART</th>
+            <th>FM</th>
+            <th>Obt. Marks</th>
+            <th>%</th>
+            <th>Result</th>
+            <th>Grade</th>
+            <th>Rank</th>
+          </tr>
+
+          <tr>
+            <td>A<sup>+</sup></td>
+            <td id="grandFullMarks"></td>
+            <td id="grandTotal" class="obt-cell"></td>
+            <td id="grandPercentage"></td>
+            <td>Pass</td>  
+            <td id="grandGrade"></td>
+            <td id="grandRank"></td>
+          </tr>
+
+        </table>
+
+      </div>
+
+      <!-- VERIFIED -->
+      <div class="verified-note">
+        ✅ Verified by- SHRIPUR KINDERGARTEN SCHOOL
+      </div>
+
+      <!-- SIGNATURE -->
+
+      <div class="signature-area">
+
+        <!-- Class Teacher -->
+        <div class="sign-col">
+          <img id="classTeacherSign" src="" alt="Class Teacher Sign" class="sign-img">
+          <div class="sign-label">Class Teacher</div>
+        </div>
+
+        <!-- Jagat Infrastructure & Algorithm -->
+        <div class="sign-col">
+          <img src="Signatures/jagatinfras.png" alt="Jagat Sign" class="sign-img">
+          <div class="sign-label">Jagat Infrastructure & Algorithm</div>
+        </div>
+
+        <!-- Principal -->
+        <div class="sign-col">
+          <img src="Signatures/principal.png" alt="Principal Sign" class="sign-img">
+          <div class="sign-label">Principal</div>
+        </div>
+
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="action-buttons">
+
+        <button onclick="window.print()">🖨️ Print</button>
+
+        <button onclick="downloadPDF()">⬇️ Download PDF</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
