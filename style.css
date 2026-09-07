@@ -14,7 +14,7 @@
 }
 
 body {
-  background: #ccffff;
+  background: #fff;
   padding: 20px;
 }
 
@@ -115,7 +115,7 @@ body {
 ========================= */
 
 .error-box {
-  background: #fff3f3;
+  background: #fff;
   border: 2px solid #e06060;
   color: #c00;
   border-radius: 10px;
@@ -159,7 +159,7 @@ body {
   height: 55px;
   border: none;
   border-radius: 10px;
-  background: #008000;
+  background: #fff;
   color: #fff;
   font-size: 20px;
   font-weight: bold;
