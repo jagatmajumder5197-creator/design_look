@@ -26,7 +26,7 @@
 body {
   background: radial-gradient(circle at 10% 20%, #eaf5ee 0%, #d8ebd2 40%, #edf6f0 90%);
   background-attachment: fixed;
-  padding: 30px 15px;
+  padding: 15px 10px;
   color: var(--text-dark);
   min-height: 100vh;
 }
@@ -35,29 +35,29 @@ body {
 .portal-container {
   width: 100%;
   max-width: 420px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 25px auto;
   text-align: center;
   background: #ffffff;
-  padding: 28px 22px;
+  padding: 24px 18px;
   border-radius: 18px;
   border: 1px solid rgba(46, 125, 50, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* 1. SCHOOL LOGO WITH GREEN BORDER AND GLOW */
+/* SCHOOL LOGO WITH GREEN BORDER AND GLOW */
 .portal-logo {
-  width: 85px;
-  height: 85px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   border-radius: 50%;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   border: 3px solid var(--secondary-green);
   padding: 3px;
   background: #ffffff;
   box-shadow: 0 0 15px rgba(46, 125, 50, 0.4);
 }
 
-/* 2. SCHOOL NAME - SMALLER, BRIGHT & BOLD GREEN */
+/* SCHOOL NAME */
 .portal-container h1 {
   font-family: 'Playfair Display', serif;
   font-size: 18px;
@@ -69,7 +69,7 @@ body {
   line-height: 1.3;
 }
 
-/* 3. SUB-TAGLINE - VIBRANT BLUE */
+/* SUB-TAGLINE */
 .portal-container h2 {
   font-size: 13px;
   color: var(--subline-blue);
@@ -79,17 +79,17 @@ body {
 }
 
 .portal-container h3 {
-  font-size: 15px;
+  font-size: 14px;
   color: #2c3e50;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 /* DROPDOWNS */
 .portal-container select {
   width: 100%;
-  height: 48px;
-  margin-bottom: 14px;
+  height: 46px;
+  margin-bottom: 12px;
   border-radius: 10px;
   border: 1.5px solid #a3c4bc;
   font-size: 14px;
@@ -106,11 +106,11 @@ body {
   border-color: #00c9a7;
 }
 
-/* 4. VIEW RESULT BUTTON - GLOWING BLUE-GREEN GRADIENT */
+/* VIEW RESULT BUTTON */
 .portal-container button,
 .portal-container .btn-result {
   width: 100%;
-  height: 50px;
+  height: 48px;
   border: none;
   border-radius: 10px;
   background: linear-gradient(135deg, #00c9a7 0%, #0081cf 100%);
@@ -132,7 +132,9 @@ body {
 
 /* MARKSHEET CONTAINER */
 .result-wrapper {
-  margin-top: 20px;
+  margin-top: 15px;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .marksheet {
@@ -140,7 +142,7 @@ body {
   width: 210mm;
   max-width: 100%;
   margin: 0 auto;
-  padding: 15mm;
+  padding: 15px 12px;
   background: #ffffff !important;
   color: var(--text-black);
   border: 2px solid var(--gold);
@@ -150,8 +152,8 @@ body {
 
 /* HEADER SECTION IN MARKSHEET */
 .top-header {
-  padding-bottom: 10px;
-  margin-bottom: 12px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
   border-bottom: 2px solid var(--gold);
 }
 
@@ -160,12 +162,13 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  gap: 6px;
 }
 
 .marksheet-logo,
 .header-logo-row img[alt="QR Code"] {
-  width: 55px;
-  height: 55px;
+  width: 46px;
+  height: 46px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -173,47 +176,49 @@ body {
 .header-center {
   flex: 1;
   text-align: center;
-  padding: 0 10px;
+  padding: 0 4px;
+  min-width: 0;
 }
 
 .header-center h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: clamp(14px, 4vw, 20px);
   font-weight: 800;
   color: var(--text-dark);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
 }
 
 .header-center h2 {
-  font-size: 13px;
+  font-size: clamp(10px, 2.5vw, 12px);
   color: var(--text-dark);
   margin: 2px 0;
   font-weight: 700;
 }
 
-/* 5. MARKSHEET RIBBON - DEEP FOREST GREEN */
+/* MARKSHEET RIBBON */
 .header-center h3 {
   display: inline-block;
-  margin-top: 6px;
+  margin-top: 4px;
   font-family: 'Playfair Display', serif;
-  font-size: 14px;
+  font-size: clamp(11px, 3vw, 13px);
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   color: #ffffff;
   background: linear-gradient(135deg, #1b4332 0%, #081c15 100%);
-  padding: 4px 24px;
+  padding: 4px 18px;
   clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
 }
 
 /* TABLES & DETAILS */
 .top-info-row {
   display: flex;
-  gap: 12px;
-  margin-top: 15px;
+  gap: 8px;
+  margin-top: 10px;
 }
 
-.student-section { flex: 1; }
+.student-section { flex: 1; min-width: 0; }
 
 .student-table, .grading-table, .result-table, .final-summary table {
   width: 100%;
@@ -222,38 +227,38 @@ body {
 
 .student-table td {
   border: 1px solid var(--border-color);
-  padding: 6px 10px;
-  font-size: 13px;
+  padding: 5px 6px;
+  font-size: clamp(10px, 2.8vw, 12px);
   font-weight: 700;
   color: #000000;
   background: #ffffff;
 }
 
 .student-table td:first-child {
-  width: 38%;
+  width: 40%;
   background: var(--mint-header);
   color: var(--text-dark);
   font-weight: 700;
 }
 
-.grading-section { flex: 0 0 125px; }
+.grading-section { flex: 0 0 110px; }
 
 .grading-title {
   text-align: center;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 800;
   color: var(--text-dark);
   background: var(--mint-header);
   border: 1px solid var(--border-color);
   border-bottom: none;
-  padding: 3px;
+  padding: 2px;
   text-transform: uppercase;
 }
 
 .grading-table th, .grading-table td {
   border: 1px solid var(--border-color);
-  padding: 2px 4px;
-  font-size: 9px;
+  padding: 2px 3px;
+  font-size: 8.5px;
   text-align: center;
   font-weight: 700;
   color: #000000;
@@ -266,19 +271,19 @@ body {
 }
 
 .assessment-title {
-  margin: 14px 0 6px 0;
+  margin: 10px 0 5px 0;
   text-align: center;
   font-family: 'Playfair Display', serif;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--text-dark);
 }
 
 .result-table th, .result-table td {
   border: 1px solid var(--border-color);
-  padding: 6px 4px;
+  padding: 5px 3px;
   text-align: center;
-  font-size: 12px;
+  font-size: clamp(9.5px, 2.5vw, 11.5px);
   color: #000000;
   background: #ffffff;
 }
@@ -295,22 +300,22 @@ body {
 
 .result-table td:first-child {
   text-align: left;
-  padding-left: 8px;
+  padding-left: 6px;
   font-weight: 700;
   color: var(--text-dark);
 }
 
 /* FINAL SUMMARY */
 .final-summary {
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .final-summary th {
   background: var(--mint-header);
   color: var(--text-dark);
   font-weight: 800;
-  font-size: 12px;
-  padding: 6px;
+  font-size: 11px;
+  padding: 5px;
   border: 1px solid var(--border-color);
 }
 
@@ -318,39 +323,39 @@ body {
   background: var(--mint-bg);
   color: #000000;
   font-weight: 800;
-  font-size: 13px;
-  padding: 6px;
+  font-size: 12px;
+  padding: 5px;
   border: 1px solid var(--border-color);
   text-align: center;
 }
 
 .verified-note {
-  margin-top: 10px;
-  padding: 5px;
+  margin-top: 8px;
+  padding: 4px;
   background: var(--mint-header);
   border: 1px solid var(--border-color);
   border-radius: 4px;
   text-align: center;
   color: var(--text-dark);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 /* BUTTONS */
 .action-buttons {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .action-buttons button {
-  padding: 9px 20px;
+  padding: 8px 16px;
   border: 1px solid #7ea88f;
   border-radius: 8px;
   background: #b8e3da;
   color: var(--text-dark);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -368,11 +373,26 @@ body {
   .portal-container, .action-buttons {
     display: none !important;
   }
+  .result-wrapper {
+    overflow: visible !important;
+  }
   .marksheet {
     box-shadow: none !important;
     border: 1px solid var(--gold) !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 10mm !important;
+    padding: 12mm !important;
+  }
+  .header-center h1 {
+    font-size: 22px !important;
+  }
+  .header-center h2 {
+    font-size: 13px !important;
+  }
+  .header-center h3 {
+    font-size: 14px !important;
+  }
+  .student-table td, .result-table th, .result-table td {
+    font-size: 12px !important;
   }
 }
