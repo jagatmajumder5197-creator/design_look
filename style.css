@@ -159,7 +159,7 @@ body {
   height: 55px;
   border: none;
   border-radius: 10px;
-  background: #fff;
+  background: #0ff;
   color: #01f33e;
   font-size: 20px;
   font-weight: bold;
@@ -168,7 +168,7 @@ body {
 }
 
 .portal-container button:hover:not(:disabled) {
-  background: #006600;
+  background: #611313;
 }
 
 .portal-container button:disabled {
