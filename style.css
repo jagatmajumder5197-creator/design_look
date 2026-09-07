@@ -174,6 +174,7 @@ body {
    ============================================================ */
 .result-wrapper {
   margin-top: 20px;
+  width: 100%;
 }
 
 .marksheet {
@@ -183,7 +184,6 @@ body {
   margin: 0 auto;
   padding: 15mm;
   
-  /* Images/bg.png ব্যাকগ্রাউন্ড হিসেবে যুক্ত করা হলো */
   background-image: url('Images/bg.png') !important;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -197,7 +197,6 @@ body {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* 4-CORNER GOLDEN CORNER BRACKETS (Outside border style) */
 .marksheet::before {
   content: "";
   position: absolute;
@@ -258,7 +257,6 @@ body {
   color: var(--gold);
 }
 
-/* MAROON RIBBON */
 .header-center h3 {
   display: inline-block;
   margin-top: 6px;
@@ -350,6 +348,13 @@ body {
 .assessment-title::before, .assessment-title::after {
   content: " 〜 ";
   color: var(--gold);
+}
+
+/* TABLE SCROLL WRAPPER FOR MOBILE */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .result-table th, .result-table td {
@@ -475,17 +480,101 @@ body {
   background: var(--btn-mint-hover);
 }
 
-/* =========================
-   PRINT CONFIGURATION
-========================= */
+/* ============================================================
+   ৪. অ্যান্ড্রয়েড ও মোবাইল রেসপন্সিভ ডিজাইন (MOBILE ADAPTATION)
+   ============================================================ */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px 5px;
+  }
+
+  .portal-container {
+    padding: 20px 15px;
+    margin-bottom: 25px;
+  }
+
+  .marksheet {
+    padding: 8mm;
+  }
+
+  .marksheet-logo,
+  .header-logo-row img[alt="QR Code"] {
+    width: 42px;
+    height: 42px;
+  }
+
+  .header-center h1 {
+    font-size: 15px;
+  }
+
+  .header-center h2 {
+    font-size: 10px;
+  }
+
+  .header-center h3 {
+    font-size: 11px;
+    padding: 3px 14px;
+  }
+
+  .top-info-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .grading-section {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .student-table td {
+    font-size: 11px;
+    padding: 5px 6px;
+  }
+
+  .result-table th, .result-table td,
+  .final-summary th, .final-summary td {
+    font-size: 10px;
+    padding: 4px 2px;
+  }
+
+  .result-table td.obt-cell {
+    font-size: 11px;
+  }
+
+  .sign-img {
+    width: 45px;
+    height: 20px;
+  }
+
+  .sign-label {
+    font-size: 9px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .action-buttons button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================================
+   ৫. প্রিন্ট ও PDF কনফিগারেশন (PRINT CONFIGURATION)
+   ============================================================ */
 @media print {
   body {
     background: #ffffff !important;
     padding: 0;
   }
+
   .portal-container, .action-buttons {
     display: none !important;
   }
+
   .marksheet {
     box-shadow: none !important;
     border: 1px solid var(--gold) !important;
@@ -497,5 +586,19 @@ body {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-}
 
+  .top-info-row {
+    flex-direction: row !important;
+  }
+
+  .grading-section {
+    flex: 0 0 125px !important;
+  }
+
+  .student-table td, .grading-table th, .grading-table td,
+  .result-table th, .result-table td,
+  .final-summary th, .final-summary td {
+    font-size: 12px !important;
+    padding: 6px 4px !important;
+  }
+}
