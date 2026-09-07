@@ -1,122 +1,153 @@
 /* ============================================================
    SHRIPUR KINDERGARTEN SCHOOL — Result Portal CSS
-   Jagat Infrastructure & Algorithm
-   (Enhanced Multi-Gradient Vintage Progress Report Theme)
+   (Outer Soft Gradient & Inner High-Contrast Clean Marksheet)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
 }
 
 :root {
-  /* গ্রাডিয়েন্ট ও মেটালিক কালার প্যালেট */
-  --gold-grad: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-  --gold-border: #c59b27;
-  
-  --maroon-grad: linear-gradient(135deg, #851d1d 0%, #a32424 50%, #611313 100%);
-  --maroon-grad-hover: linear-gradient(135deg, #611313 0%, #851d1d 50%, #420a0a 100%);
-  
-  --mint-header-grad: linear-gradient(180deg, #ebf5ee 0%, #cce4d4 100%);
-  --mint-bg-grad: linear-gradient(180deg, #f7faf8 0%, #ebf4ee 100%);
-  --mint-card-grad: linear-gradient(135deg, #ffffff 0%, #f4f9f5 100%);
-  
-  --btn-mint-grad: linear-gradient(135deg, #c3ebe1 0%, #9dd4c8 100%);
-  --btn-mint-hover-grad: linear-gradient(135deg, #a8dfd3 0%, #83c6b8 100%);
-  
-  --text-dark: #1e3a2b;
-  --text-black: #111111;
-  --border-color: #3b5e48;
+  --gold: #c59b27;
+  --gold-light: #e0c068;
+  --maroon: #851d1d;
+  --maroon-dark: #611313;
+  --mint-header: #dcebe1;
+  --mint-bg: #f2f8f4;
+  --btn-mint: #b8e3da;
+  --btn-mint-hover: #a2d8cd;
+  --text-dark: #1b3323;
+  --text-black: #000000;
+  --border-color: #4a6b56;
 }
 
+/* ============================================================
+   ১. বাইরের ব্যাকগ্রাউন্ড (OUTSIDE GRADIENT DESIGN)
+   ============================================================ */
 body {
-  background: linear-gradient(135deg, #e8f3ed 0%, #f4f9f6 50%, #dfede4 100%);
-  min-height: 100vh;
-  padding: 20px;
+  background: radial-gradient(circle at 10% 20%, #eaf5ee 0%, #d8ebd2 40%, #edf6f0 90%);
+  background-attachment: fixed;
+  padding: 30px 15px;
   color: var(--text-dark);
+  min-height: 100vh;
 }
 
-/* =========================
-   PORTAL LOGO (Metallic Gold Ring)
-========================= */
-
-.portal-logo {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  border: 3px solid transparent;
-  background: linear-gradient(#fff, #fff) padding-box, var(--gold-grad) border-box;
-  padding: 4px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* =========================
-   PORTAL (SEARCH AREA CARD)
-========================= */
-
+/* ============================================================
+   ২. পোর্টাল এলাকা (SEARCH PORTAL CARD)
+   ============================================================ */
 .portal-container {
   width: 100%;
-  max-width: 500px;
-  margin: 30px auto;
+  max-width: 480px;
+  margin: 0 auto 40px auto;
   text-align: center;
-  padding: 30px;
-  background: var(--mint-card-grad);
+  background: #ffffff;
+  padding: 30px 25px;
   border-radius: 16px;
-  border: 1px solid rgba(59, 94, 72, 0.2);
-  box-shadow: 0 10px 30px rgba(30, 58, 43, 0.08);
+  border: 1px solid rgba(197, 155, 39, 0.3);
+  box-shadow: 0 10px 30px rgba(27, 51, 35, 0.08);
+}
+
+.portal-logo {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 2px solid var(--gold);
+  padding: 3px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .portal-container h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--text-dark);
-  margin-bottom: 6px;
-  letter-spacing: 0.5px;
+  margin-bottom: 4px;
 }
 
 .portal-container h2 {
-  font-size: 14px;
-  background: var(--gold-grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 6px;
 }
 
 .portal-container h3 {
-  font-size: 17px;
-  color: #3d5948;
+  font-size: 16px;
+  color: #556b5d;
   font-weight: 700;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
 
-/* =========================
-   LOADER
-========================= */
+/* SELECT & VIEW RESULT BUTTON */
+.portal-container select {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1.5px solid #bd2828;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-dark);
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.2s;
+}
 
+.portal-container select:focus {
+  border-color: var(--gold);
+  background: #fff;
+}
+
+.portal-container button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(133, 29, 29, 0.25);
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+
+.portal-container button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(133, 29, 29, 0.35);
+}
+
+.portal-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* LOADER & ERROR */
 .loader-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: var(--text-dark);
-  font-size: 15px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .loader {
-  width: 38px;
-  height: 38px;
-  border: 4px solid #d3e2d7;
-  border-top: 4px solid #851d1d;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #d0dfd5;
+  border-top-color: var(--maroon);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -125,146 +156,55 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* =========================
-   ERROR BOX
-========================= */
-
 .error-box {
-  background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%);
-  border: 2px solid #e06060;
-  color: #b71c1c;
-  border-radius: 10px;
-  padding: 14px;
-  font-size: 15px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(224, 96, 96, 0.15);
+  background: #fdf2f2;
+  border: 1px solid #f8b4b4;
+  color: #9b1c1c;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
-/* =========================
-   SELECT & BUTTON
-========================= */
+.hidden { display: none; }
 
-.portal-container select {
-  width: 100%;
-  height: 52px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  border: 2px solid #b3d4c0;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  color: var(--text-dark);
-  background: #ffffff;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
-}
-
-.portal-container select:focus {
-  outline: none;
-  border-color: var(--gold-border);
-  box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.25);
-}
-
-.portal-container select:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* View Result বাটন - ডিপ মারুন গ্রাডিয়েন্ট */
-.portal-container button {
-  width: 100%;
-  height: 52px;
-  border: none;
-  border-radius: 10px;
-  background: var(--maroon-grad);
-  color: #ffffff;
-  font-size: 17px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 18px rgba(133, 29, 29, 0.35);
-}
-
-.portal-container button:hover:not(:disabled) {
-  background: var(--maroon-grad-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(133, 29, 29, 0.45);
-}
-
-.portal-container button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* =========================
-   UTILITY
-========================= */
-
-.hidden {
-  display: none;
-}
-
-/* =========================
-   RESULT WRAPPER & MARKSHEET
-========================= */
-
+/* ============================================================
+   ৩. ভেতরের মার্কশিট (INSIDE CLEAN WHITE MARKSHEET)
+   ============================================================ */
 .result-wrapper {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .marksheet {
   position: relative;
   width: 210mm;
-  margin: auto;
-  padding: 18mm;
-  color: var(--text-dark);
-  border: 2px solid var(--gold-border);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.12), inset 0 0 0 5px #ffffff;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 15mm;
+  background: #ffffff !important; /* সম্পূর্ণ ক্লিয়ার হোয়াইট ব্যাকগ্রাউন্ড */
+  color: var(--text-black);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
 
-  /* 4-Corner Decorative Brackets + Soft Radial Gradient Frame Background */
-  background-repeat: no-repeat;
-  background-image:
-    linear-gradient(var(--gold-border), var(--gold-border)),
-    linear-gradient(var(--gold-border), var(--gold-border)),
-    linear-gradient(var(--gold-border), var(--gold-border)),
-    linear-gradient(var(--gold-border), var(--gold-border)),
-    linear-gradient(var(--gold-border), var(--gold-border)),
-    linear-gradient(var(--gold-border), var(--gold-border)),
-    linear-gradient(var(--gold-border), var(--gold-border)),
-    linear-gradient(var(--gold-border), var(--gold-border)),
-    radial-gradient(circle at top left, #ffffff 0%, #faf8f3 50%, #edf5ef 100%);
-  background-size:
-    42px 3px, 3px 42px,
-    42px 3px, 3px 42px,
-    42px 3px, 3px 42px,
-    42px 3px, 3px 42px,
-    100% 100%;
-  background-position:
-    10mm 10mm,
-    10mm 10mm,
-    calc(100% - 10mm - 42px) 10mm,
-    calc(100% - 10mm - 3px) 10mm,
-    10mm calc(100% - 10mm - 3px),
-    10mm calc(100% - 10mm - 42px),
-    calc(100% - 10mm - 42px) calc(100% - 10mm - 3px),
-    calc(100% - 10mm - 3px) calc(100% - 10mm - 42px),
-    0 0;
+/* 4-CORNER GOLDEN CORNER BRACKETS (Outside border style) */
+.marksheet::before {
+  content: "";
+  position: absolute;
+  top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px solid rgba(197, 155, 39, 0.4);
+  pointer-events: none;
 }
 
 /* =========================
-   HEADER
+   HEADER SECTION
 ========================= */
-
 .top-header {
-  position: relative;
-  padding-bottom: 12px;
-  margin-bottom: 6px;
-  width: 100%;
-  border-bottom: 3px solid var(--gold-border);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--gold);
 }
 
 .header-logo-row {
@@ -272,39 +212,20 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 8px;
 }
 
-.marksheet-logo {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  background: linear-gradient(#fff, #fff) padding-box, var(--gold-grad) border-box;
-  padding: 2px;
-}
-
+.marksheet-logo,
 .header-logo-row img[alt="QR Code"] {
-  width: 56px;
-  height: 56px;
-  border-radius: 4px;
-  border: 1px solid var(--gold-border);
-  padding: 2px;
-  background: #fff;
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
 .header-center {
   flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: 0 4px;
+  padding: 0 10px;
 }
 
 .header-center h1 {
@@ -312,362 +233,256 @@ body {
   font-size: 22px;
   font-weight: 800;
   color: var(--text-dark);
-  letter-spacing: 0.5px;
-  margin: 0 0 4px 0;
   text-transform: uppercase;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
+  letter-spacing: 0.5px;
 }
 
 .header-center h2 {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-dark);
   margin: 2px 0;
   font-weight: 700;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
 }
 
 .header-center h2::before,
 .header-center h2::after {
-  content: "❦";
-  color: var(--gold-border);
-  margin: 0 8px;
+  content: " ❦ ";
+  color: var(--gold);
 }
 
-/* PROGRESS REPORT মারুন গ্রাডিয়েন্ট রিবন */
+/* MAROON RIBBON */
 .header-center h3 {
   display: inline-block;
-  margin: 6px auto 0 auto;
+  margin-top: 6px;
   font-family: 'Playfair Display', serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   color: #ffffff;
-  background: var(--maroon-grad);
-  padding: 6px 28px;
-  clip-path: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0% 50%);
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  background: var(--maroon);
+  padding: 4px 24px;
+  clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
 }
 
 /* =========================
-   STUDENT DETAILS + GRADING
+   STUDENT INFO & GRADING
 ========================= */
-
 .top-info-row {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin-top: 18px;
+  gap: 12px;
+  margin-top: 15px;
 }
 
-.student-section {
-  flex: 1;
-}
+.student-section { flex: 1; }
 
-.student-table {
+.student-table, .grading-table, .result-table, .final-summary table {
   width: 100%;
-  height: 100%;
   border-collapse: collapse;
-  border: 1px solid var(--border-color);
 }
 
 .student-table td {
   border: 1px solid var(--border-color);
-  padding: 8px 12px;
-  font-size: 15px;
+  padding: 6px 10px;
+  font-size: 13px;
   font-weight: 700;
+  color: #000000;
   background: #ffffff;
-  color: var(--text-black);
 }
 
 .student-table td:first-child {
-  font-weight: bold;
-  width: 40%;
-  background: var(--mint-header-grad);
+  width: 38%;
+  background: var(--mint-header);
   color: var(--text-dark);
-  font-size: 14px;
+  font-weight: 700;
 }
 
 .grading-section {
-  flex: 0 0 130px;
-  max-width: 130px;
+  flex: 0 0 125px;
 }
 
 .grading-title {
   text-align: center;
   font-size: 9px;
-  font-weight: bold;
+  font-weight: 800;
   color: var(--text-dark);
-  background: var(--mint-header-grad);
+  background: var(--mint-header);
   border: 1px solid var(--border-color);
   border-bottom: none;
-  padding: 4px;
+  padding: 3px;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
 }
 
-.grading-table {
-  width: 100%;
-  border-collapse: collapse;
+.grading-table th, .grading-table td {
   border: 1px solid var(--border-color);
-}
-
-.grading-table th,
-.grading-table td {
-  border: 1px solid var(--border-color);
-  padding: 3px 4px;
+  padding: 2px 4px;
   font-size: 9px;
   text-align: center;
-  line-height: 1.3;
-  background: #ffffff;
   font-weight: 700;
-  color: var(--text-black);
+  color: #000;
+  background: #fff;
 }
 
 .grading-table th {
-  background: var(--mint-header-grad);
+  background: var(--mint-header);
   color: var(--text-dark);
-  font-weight: bold;
 }
 
 /* =========================
-   ASSESSMENT TITLE
+   ASSESSMENT & MARKS TABLE
 ========================= */
-
 .assessment-title {
-  margin-top: 20px;
-  margin-bottom: 8px;
+  margin: 14px 0 6px 0;
   text-align: center;
   font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--text-dark);
-  letter-spacing: 0.3px;
 }
 
-.assessment-title::before,
-.assessment-title::after {
-  content: "〜";
-  color: var(--gold-border);
-  margin: 0 8px;
+.assessment-title::before, .assessment-title::after {
+  content: " 〜 ";
+  color: var(--gold);
 }
 
-/* =========================
-   RESULT TABLE (Gradient Mint Theme)
-========================= */
-
-.result-table {
-  width: 100%;
-  border-collapse: collapse;
+.result-table th, .result-table td {
   border: 1px solid var(--border-color);
-}
-
-.result-table th,
-.result-table td {
-  border: 1px solid var(--border-color);
-  padding: 8px 6px;
+  padding: 6px 4px;
   text-align: center;
-  font-size: 13px;
-  background: var(--mint-bg-grad);
-  color: var(--text-black);
+  font-size: 12px;
+  color: #000000;
+  background: #ffffff;
 }
 
 .result-table th {
-  background: var(--mint-header-grad);
+  background: var(--mint-header);
   color: var(--text-dark);
   font-weight: 800;
-  font-size: 13px;
 }
 
-.result-table tbody tr:nth-child(even) {
-  background: #ffffff;
+.result-table tbody tr:nth-child(even) td {
+  background: var(--mint-bg); /* একদম হালকা মিন্ট শেড অল্টারনেট রো-তে */
 }
 
 .result-table td:first-child {
   text-align: left;
-  padding-left: 10px;
+  padding-left: 8px;
   font-weight: 700;
   color: var(--text-dark);
-  font-size: 13px;
-}
-
-.result-table thead tr:first-child th:nth-child(2),
-.result-table thead tr:nth-child(2) th:nth-child(3),
-.result-table tbody td:nth-child(4) {
-  border-right: 2px solid var(--border-color);
-}
-
-/* Obtained Marks Side */
-.result-table tbody td:nth-child(n+5) {
-  font-weight: 800;
-  color: var(--text-black);
-  font-size: 14px;
 }
 
 .result-table td.obt-cell {
-  font-weight: 900;
-  font-size: 15px;
-  color: var(--text-black);
+  font-weight: 800;
+  font-size: 13px;
 }
 
 /* =========================
-   FINAL SUMMARY
+   FINAL SUMMARY & VERIFIED
 ========================= */
-
 .final-summary {
-  margin-top: 16px;
-}
-
-.final-summary table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid var(--border-color);
-}
-
-.final-summary th,
-.final-summary td {
-  border: 1px solid var(--border-color);
-  padding: 8px 6px;
-  text-align: center;
-  font-weight: 800;
-  font-size: 14px;
+  margin-top: 12px;
 }
 
 .final-summary th {
-  background: var(--mint-header-grad);
+  background: var(--mint-header);
   color: var(--text-dark);
+  font-weight: 800;
+  font-size: 12px;
+  padding: 6px;
+  border: 1px solid var(--border-color);
 }
 
 .final-summary td {
-  font-size: 15px;
-  color: var(--text-black);
-  background: var(--mint-bg-grad);
+  background: var(--mint-bg);
+  color: #000;
   font-weight: 800;
+  font-size: 13px;
+  padding: 6px;
+  border: 1px solid var(--border-color);
+  text-align: center;
 }
-
-.final-summary td.obt-cell {
-  font-weight: 900;
-  font-size: 17px;
-}
-
-/* =========================
-   VERIFIED NOTE
-========================= */
 
 .verified-note {
-  margin-top: 14px;
-  padding: 8px;
-  background: var(--mint-header-grad);
+  margin-top: 10px;
+  padding: 5px;
+  background: var(--mint-header);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: 4px;
   text-align: center;
   color: var(--text-dark);
-  font-weight: bold;
-  font-size: 13px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-}
-
-.verified-note::before {
-  content: "✔ ";
-  color: #2e7d32;
+  font-weight: 700;
+  font-size: 12px;
 }
 
 /* =========================
-   SIGNATURE AREA
+   SIGNATURE & BUTTONS
 ========================= */
-
 .signature-area {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  text-align: center;
-  width: 100%;
-  margin-top: 35px;
+  margin-top: 30px;
 }
 
 .sign-col {
   flex: 1;
   text-align: center;
-  padding: 0 5px;
 }
 
 .sign-img {
-  width: 65px;
-  height: 26px;
+  width: 60px;
+  height: 25px;
   object-fit: contain;
+  margin: 0 auto -2px auto;
   display: block;
-  margin: 0 auto -4px auto;
 }
 
 .sign-label {
   border-top: 1px solid var(--text-dark);
-  padding-top: 4px;
+  padding-top: 3px;
   font-size: 11px;
-  font-weight: bold;
+  font-weight: 700;
   color: var(--text-dark);
 }
-
-/* =========================
-   ACTION BUTTONS (Print / Download PDF)
-========================= */
 
 .action-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 25px;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .action-buttons button {
-  padding: 12px 28px;
-  border: 1px solid #8ec4b8;
-  border-radius: 10px;
-  background: var(--btn-mint-grad);
+  padding: 9px 20px;
+  border: 1px solid #7ea88f;
+  border-radius: 8px;
+  background: var(--btn-mint);
   color: var(--text-dark);
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: background 0.2s;
 }
 
 .action-buttons button:hover {
-  background: var(--btn-mint-hover-grad);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  background: var(--btn-mint-hover);
 }
 
 /* =========================
-   PRINT STYLES
+   PRINT CONFIGURATION
 ========================= */
-
-@page {
-  size: A4;
-  margin: 15mm;
-}
-
 @media print {
   body {
     background: #ffffff !important;
     padding: 0;
   }
-
-  .portal-container,
-  .action-buttons {
+  .portal-container, .action-buttons {
     display: none !important;
   }
-
   .marksheet {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-    border: none;
-    page-break-inside: avoid;
-    background-image: none !important;
+    box-shadow: none !important;
+    border: 1px solid var(--gold) !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10mm !important;
   }
 }
