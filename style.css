@@ -160,7 +160,7 @@ body {
   border: none;
   border-radius: 10px;
   background: #fff;
-  color: #fff;
+  color: #01f33e;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
@@ -260,7 +260,7 @@ body {
   flex-shrink: 0;
   border-radius: 50%;
   border: 2px solid var(--navy);
-  background: #fff;
+  background: #;
   padding: 3px;
 }
 
