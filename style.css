@@ -1,112 +1,96 @@
 /* ============================================================
-   SHRIPUR KINDERGARTEN SCHOOL — Result Portal CSS
-   (Strict Frame-Fit & Ultra-Compact Layout)
+   SHRIPUR KINDERGARTEN SCHOOL — Precise Marksheet CSS
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
 }
 
 :root {
-  --gold: #c59b27;
-  --gold-light: #e0c068;
-  --maroon: #851d1d;
-  --maroon-dark: #611313;
-  --mint-header: #dcebe1;
-  --mint-bg: #f2f8f4;
-  --btn-mint: #b8e3da;
-  --btn-mint-hover: #a2d8cd;
-  --text-dark: #1b3323;
+  --gold-text: #816d3b;
+  --gold-border: #9e8952;
+  --mint-bg: #dcece5;
+  --table-border: #a2bca8;
+  --text-dark: #122117;
   --text-black: #000000;
-  --border-color: #4a6b56;
 }
 
-/* ============================================================
-   ১. বাইরের ব্যাকগ্রাউন্ড
-   ============================================================ */
 body {
-  background: radial-gradient(circle at 10% 20%, #eaf5ee 0%, #d8ebd2 40%, #edf6f0 90%);
-  background-attachment: fixed;
-  padding: 10px 5px;
-  color: var(--text-dark);
+  background: radial-gradient(circle at 50% 50%, #f0f7f2 0%, #d8ebd2 100%);
+  padding: 15px 8px;
   min-height: 100vh;
+  color: var(--text-dark);
 }
 
 /* ============================================================
-   ২. পোর্টাল এলাকা (সার্চ ও সিলেক্ট সেকশন)
+   ১. সার্চ / পোর্টালে ইনপুট সেকশন (PORTAL CONTAINER)
    ============================================================ */
 .portal-container {
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
   margin: 0 auto 15px auto;
   text-align: center;
   background: #ffffff;
   padding: 15px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(197, 155, 39, 0.3);
-  box-shadow: 0 4px 15px rgba(27, 51, 35, 0.08);
+  border-radius: 10px;
+  border: 1px solid rgba(158, 137, 82, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .portal-logo {
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
-  border-radius: 50%;
-  margin-bottom: 5px;
-  border: 2px solid var(--gold);
-  padding: 2px;
-  background: #fff;
+  margin-bottom: 4px;
 }
 
 .portal-container h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 800;
-  color: var(--text-dark);
-  margin-bottom: 2px;
+  color: var(--gold-text);
 }
 
 .portal-container h2 {
   font-size: 10px;
-  color: var(--gold);
+  color: var(--text-dark);
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .portal-container h3 {
-  font-size: 12px;
-  color: #556b5d;
+  font-size: 11px;
+  color: var(--gold-text);
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .portal-container select {
   width: 100%;
-  height: 38px;
+  height: 36px;
   margin-bottom: 8px;
-  border-radius: 6px;
-  border: 1.5px solid #bd2828;
-  font-size: 12.5px;
+  border-radius: 5px;
+  border: 1px solid var(--table-border);
+  font-size: 12px;
   font-weight: 600;
   text-align: center;
   color: var(--text-dark);
-  background: #fafafa;
   outline: none;
 }
 
 .portal-container button {
   width: 100%;
-  height: 38px;
+  height: 36px;
   border: none;
-  border-radius: 6px;
-  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  border-radius: 5px;
+  background: #801b1b;
   color: #ffffff;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -116,22 +100,20 @@ body {
   cursor: not-allowed;
 }
 
-/* LOADER & ERROR */
 .loader-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
   margin-bottom: 8px;
-  font-size: 11.5px;
-  font-weight: 600;
+  font-size: 11px;
 }
 
 .loader {
-  width: 22px;
-  height: 22px;
-  border: 2.5px solid #d0dfd5;
-  border-top-color: var(--maroon);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-top-color: #801b1b;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -141,36 +123,33 @@ body {
 }
 
 .error-box {
-  background: #fdf2f2;
-  border: 1px solid #f8b4b4;
+  background: #fde8e8;
   color: #9b1c1c;
-  border-radius: 6px;
   padding: 6px;
-  font-size: 11.5px;
+  border-radius: 4px;
+  font-size: 11px;
   margin-bottom: 8px;
 }
 
-.hidden { display: none; }
+.hidden { display: none !important; }
 
 /* ============================================================
-   ৩. কাস্টম ব্যাকগ্রাউন্ড মার্কশিট (BORDER FRAME FIT)
+   ২. মার্কশিট কন্টেইনার (COMPACT & BORDER FIT)
    ============================================================ */
 .result-wrapper {
-  margin-top: 5px;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
 .marksheet {
   position: relative;
   width: 100%;
-  max-width: 650px; /* অতিরিক্ত চওড়া বন্ধ করতে ম্যাক্স উইডথ কমানো হয়েছে */
+  max-width: 640px; /* অতিরিক্ত চওড়া হওয়া বন্ধ করা হয়েছে */
   margin: 0 auto;
   
-  /* পার্সেন্টেজ প্যাডিং: bg.png এর বাইরের ডেকোরেটিভ বর্ডার ছাড়িয়ে ভেতরের সাদা অংশে কন্টেন্ট লক রাখবে */
-  padding: 12% 10% 9% 10%; 
+  /* ব্যাকগ্রাউন্ড ইমেজের ভেতরের সাদা অংশে কন্টেন্ট লক করার প্যাডিং */
+  padding: 42px 35px 30px 35px;
   
   background-image: url('Images/bg.png') !important;
   background-size: 100% 100%;
@@ -187,22 +166,18 @@ body {
    HEADER SECTION
 ========================= */
 .top-header {
-  padding-bottom: 4px;
   margin-bottom: 6px;
-  border-bottom: 1.5px solid var(--gold);
 }
 
 .header-logo-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
-.marksheet-logo,
-.header-logo-row img[alt="QR Code"] {
-  width: 38px;
-  height: 38px;
+.marksheet-logo {
+  width: 42px;
+  height: 42px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -210,58 +185,57 @@ body {
 .header-center {
   flex: 1;
   text-align: center;
-  padding: 0 4px;
+  padding: 0 5px;
 }
 
 .header-center h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
-  color: var(--text-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.2px;
+  color: var(--gold-text);
+  letter-spacing: 0.3px;
   line-height: 1.1;
+  text-transform: uppercase;
 }
 
 .header-center h2 {
-  font-size: 10px;
+  font-size: 10.5px;
   color: var(--text-dark);
-  margin: 1px 0;
   font-weight: 700;
+  margin: 2px 0;
 }
 
 .header-center h2::before,
 .header-center h2::after {
   content: " ❦ ";
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
+/* PROGRESS REPORT GOLDEN RIBBON BANNER */
 .header-center h3 {
   display: inline-block;
-  margin-top: 2px;
-  font-family: 'Playfair Display', serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  color: #ffffff;
-  background: var(--maroon);
-  padding: 2px 12px;
-  clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
+  background: linear-gradient(180deg, #d8a84e 0%, #b88628 100%);
+  color: #000000;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2.5px 22px;
+  letter-spacing: 1px;
+  margin-top: 3px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 
 /* =========================
-   STUDENT INFO & COMPACT GRADING
+   STUDENT INFO & GRADING
 ========================= */
 .top-info-row {
   display: flex;
-  gap: 5px;
-  margin-top: 5px;
+  gap: 8px;
+  margin-top: 8px;
   align-items: stretch;
 }
 
-.student-section { 
-  flex: 1;
-}
+.student-section { flex: 1; }
 
 .student-table, .grading-table, .result-table, .final-summary table {
   width: 100%;
@@ -269,59 +243,58 @@ body {
 }
 
 .student-table td {
-  border: 1px solid var(--border-color);
-  padding: 2px 5px;
-  font-size: 10px;
+  border: 1px solid var(--table-border);
+  padding: 3px 6px;
+  font-size: 10.5px;
   font-weight: 700;
-  color: #000000;
+  color: #000;
   background: #ffffff;
 }
 
 .student-table td:first-child {
-  width: 36%;
-  background: var(--mint-header);
+  width: 38%;
+  background: var(--mint-bg);
   color: var(--text-dark);
 }
 
-/* অতি কমপ্যাক্ট লেটার গ্রেডিং টেবিল */
+/* GRADING TABLE */
 .grading-section {
-  flex: 0 0 72px;
-  max-width: 72px;
+  width: 115px;
+  flex-shrink: 0;
 }
 
 .grading-title {
   text-align: center;
-  font-size: 6px;
+  font-size: 7.5px;
   font-weight: 800;
   color: var(--text-dark);
-  background: var(--mint-header);
-  border: 1px solid var(--border-color);
+  background: var(--mint-bg);
+  border: 1px solid var(--table-border);
   border-bottom: none;
   padding: 1px;
   text-transform: uppercase;
 }
 
 .grading-table th, .grading-table td {
-  border: 1px solid var(--border-color);
-  padding: 0.5px;
-  font-size: 6px;
-  line-height: 1.0;
+  border: 1px solid var(--table-border);
+  padding: 1px;
+  font-size: 7.5px;
   text-align: center;
   font-weight: 700;
   color: #000;
-  background: #fff;
+  background: #ffffff;
 }
 
 .grading-table th {
-  background: var(--mint-header);
+  background: var(--mint-bg);
   color: var(--text-dark);
 }
 
 /* =========================
-   SUBJECTS & MARKS TABLE
+   SUBJECTS TABLE
 ========================= */
 .assessment-title {
-  margin: 5px 0 2px 0;
+  margin: 8px 0 4px 0;
   text-align: center;
   font-family: 'Playfair Display', serif;
   font-size: 11.5px;
@@ -331,41 +304,35 @@ body {
 
 .assessment-title::before, .assessment-title::after {
   content: " 〜 ";
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 .table-responsive {
   width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .result-table th, .result-table td {
-  border: 1px solid var(--border-color);
-  padding: 2px 1.5px;
+  border: 1px solid var(--table-border);
+  padding: 3px 2px;
   text-align: center;
   font-size: 9.5px;
-  color: #000000;
+  color: #000;
   background: #ffffff;
-  line-height: 1.1;
 }
 
 .result-table th {
-  background: var(--mint-header);
+  background: var(--mint-bg);
   color: var(--text-dark);
   font-weight: 800;
 }
 
-.result-table tbody tr:nth-child(even) td {
-  background: var(--mint-bg);
-}
-
 .result-table td:first-child {
   text-align: left;
-  padding-left: 4px;
+  padding-left: 6px;
   font-weight: 700;
   color: var(--text-dark);
   white-space: nowrap;
+  width: 26%;
 }
 
 .result-table td.obt-cell {
@@ -376,33 +343,33 @@ body {
    FINAL SUMMARY & VERIFIED
 ========================= */
 .final-summary {
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .final-summary th {
-  background: var(--mint-header);
+  background: var(--mint-bg);
   color: var(--text-dark);
   font-weight: 800;
   font-size: 9px;
-  padding: 2px 1px;
-  border: 1px solid var(--border-color);
+  padding: 3px 2px;
+  border: 1px solid var(--table-border);
 }
 
 .final-summary td {
-  background: var(--mint-bg);
+  background: #ffffff;
   color: #000;
   font-weight: 800;
-  font-size: 9.5px;
-  padding: 2px 1px;
-  border: 1px solid var(--border-color);
+  font-size: 10px;
+  padding: 3px 2px;
+  border: 1px solid var(--table-border);
   text-align: center;
 }
 
 .verified-note {
-  margin-top: 4px;
-  padding: 2px;
-  background: var(--mint-header);
-  border: 1px solid var(--border-color);
+  margin-top: 6px;
+  padding: 2.5px;
+  background: var(--mint-bg);
+  border: 1px solid var(--table-border);
   border-radius: 3px;
   text-align: center;
   color: var(--text-dark);
@@ -417,7 +384,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 10px;
+  margin-top: 15px;
+  padding: 0 5px;
 }
 
 .sign-col {
@@ -426,16 +394,16 @@ body {
 }
 
 .sign-img {
-  width: 38px;
-  height: 15px;
+  height: 20px;
+  max-width: 75px;
   object-fit: contain;
   margin: 0 auto -2px auto;
   display: block;
 }
 
 .sign-label {
-  border-top: 1px solid var(--text-dark);
-  padding-top: 1px;
+  border-top: 1px solid #000000;
+  padding-top: 2px;
   font-size: 8px;
   font-weight: 700;
   color: var(--text-dark);
@@ -449,103 +417,49 @@ body {
   justify-content: center;
   gap: 10px;
   margin-top: 12px;
-  width: 100%;
-  max-width: 400px;
 }
 
 .action-buttons button {
-  flex: 1;
-  padding: 8px 14px;
-  border: 1px solid #7ea88f;
-  border-radius: 6px;
-  background: var(--btn-mint);
-  color: var(--text-dark);
-  font-size: 12px;
+  padding: 6px 14px;
+  border: 1px solid #82bda5;
+  border-radius: 5px;
+  background: #c3e2d5;
+  color: #103322;
+  font-size: 11px;
   font-weight: 700;
   cursor: pointer;
 }
 
 /* ============================================================
-   ৪. মোবাইল ও অ্যান্ড্রয়েড ফ্রেন্ডলি রেসপন্সিভনেস
+   ৩. মোবাইল ফ্রেন্ডলি অ্যাডজাস্টমেন্ট
    ============================================================ */
-@media screen and (max-width: 768px) {
-  body {
-    padding: 4px 2px;
-  }
-
+@media screen and (max-width: 600px) {
   .marksheet {
-    /* মোবাইলেও শতাংশ হিসেবে প্যাডিং লক থাকবে, ফলে টেক্সট বর্ডারে ঢুকবে না */
-    padding: 13% 10.5% 10% 10.5%; 
+    padding: 35px 20px 22px 20px; /* মোবাইলেও রেসপন্সিভলি কন্টেন্ট লকড থাকবে */
   }
 
-  .marksheet-logo,
-  .header-logo-row img[alt="QR Code"] {
-    width: 28px;
-    height: 28px;
-  }
+  .header-center h1 { font-size: 13.5px; }
+  .header-center h2 { font-size: 8.5px; }
+  .header-center h3 { font-size: 8.5px; padding: 1.5px 12px; }
 
-  .header-center h1 {
-    font-size: 11.5px;
-  }
+  .marksheet-logo { width: 32px; height: 32px; }
 
-  .header-center h2 {
-    font-size: 8px;
-  }
-
-  .header-center h3 {
-    font-size: 8px;
-    padding: 1px 6px;
-  }
-
-  .student-table td {
-    font-size: 8px;
-    padding: 1px 2px;
-  }
-
-  .grading-section {
-    flex: 0 0 60px;
-    max-width: 60px;
-  }
-
-  .grading-title {
-    font-size: 5px;
-  }
-
-  .grading-table th, .grading-table td {
-    font-size: 5px;
-    padding: 0.5px;
-  }
+  .student-table td { font-size: 8.5px; padding: 2px 3px; }
+  .grading-section { width: 95px; }
+  .grading-title, .grading-table th, .grading-table td { font-size: 6px; padding: 0.5px; }
 
   .result-table th, .result-table td,
   .final-summary th, .final-summary td {
     font-size: 7.5px;
-    padding: 1px 0.5px;
+    padding: 1.5px 1px;
   }
 
-  .sign-img {
-    width: 28px;
-    height: 12px;
-  }
-
-  .sign-label {
-    font-size: 6.5px;
-  }
-
-  .action-buttons {
-    flex-direction: column;
-    gap: 6px;
-    padding: 0 10px;
-  }
-
-  .action-buttons button {
-    width: 100%;
-    padding: 8px;
-    font-size: 11.5px;
-  }
+  .sign-img { height: 16px; }
+  .sign-label { font-size: 6.5px; }
 }
 
 /* ============================================================
-   ৫. প্রিন্ট কনফিগারেশন (A4 EXACT FIT)
+   ৪. প্রিন্ট কনফিগারেশন
    ============================================================ */
 @media print {
   body {
@@ -561,7 +475,7 @@ body {
     box-shadow: none !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 12% 10% 9% 10% !important;
+    padding: 42px 35px 30px 35px !important;
     background-image: url('Images/bg.png') !important;
     background-size: 100% 100% !important;
     -webkit-print-color-adjust: exact !important;
