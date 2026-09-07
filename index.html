@@ -1,264 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="bn">
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shripur Kindergarten School</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f2f7f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+    .card {
+      background: #ffffff;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      width: 90%;
+      max-width: 360px;
+      text-align: center;
+    }
 
-  <title>SHRIPUR KINDERGARTEN SCHOOL</title>
+    /* ১. লোগোর চারপাশে সবুজ বর্ডার ও গ্লো */
+    .school-logo {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      border: 3px solid #2e7d32; /* সবুজ বর্ডার */
+      box-shadow: 0 0 12px rgba(46, 125, 50, 0.35); /* সবুজ গ্লো */
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    /* ২. স্কুলের নাম - ছোট, বোল্ড ও উজ্জ্বল সবুজ */
+    .school-name {
+      font-size: 17px; /* আগের চেয়ে ছোট */
+      font-weight: 800; /* বোল্ড */
+      color: #0a7e43; /* উজ্জ্বল সবুজ */
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin: 6px 0;
+      line-height: 1.3;
+    }
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    .sub-heading {
+      font-size: 12px;
+      color: #c09c38;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
 
+    .eval-title {
+      font-size: 15px;
+      color: #2c3e50;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    /* ড্রপডাউন ইনপুট */
+    .select-box {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 14px;
+      border: 1px solid #cfd8dc;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #455a64;
+      outline: none;
+      box-sizing: border-box;
+      background-color: #fff;
+    }
+
+    /* ৩. View Result বাটন - জ্বলজ্বলে নীল-সবুজ (Blue-Green Glow) */
+    .btn-result {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #00c9a7 0%, #0081cf 100%); /* উজ্জ্বল নীল-সবুজ গ্রেডিয়েন্ট */
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 201, 167, 0.45); /* জ্বলজ্বলে ছায়া */
+      transition: all 0.3s ease;
+    }
+
+    .btn-result:hover {
+      background: linear-gradient(135deg, #00b395 0%, #006bbd 100%);
+      box-shadow: 0 8px 24px rgba(0, 201, 167, 0.6);
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
-
 <body>
 
-  <!-- =========================
-       SEARCH AREA
-  ========================== -->
+  <div class="card">
+    <!-- লোগো -->
+    <img src="your-logo-path.png" alt="School Logo" class="school-logo">
+    
+    <!-- স্কুলের নাম -->
+    <h1 class="school-name">SHRIPUR KINDERGARTEN SCHOOL</h1>
+    
+    <div class="sub-heading">Jagat Infrastructure & Algorithm</div>
+    <div class="eval-title">2<sup>nd</sup> Summative Evaluation - 2026</div>
 
-  <div class="portal-container">
-
-    <img
-      src="Logo_Jagat.png"
-      alt="Jagat Infrastructure & Algorithm Logo"
-      class="portal-logo"
-    >
-
-    <h1>SHRIPUR KINDERGARTEN SCHOOL</h1>
-
-    <h2>Jagat Infrastructure & Algorithm</h2>
-
-    <h3>2<sup>Nd</sup> Summative Evaluation - 2026</h3>
-
-    <div class="loader-wrap" id="loaderWrap">
-      <div class="loader"></div>
-      <p>Please wait, Parsing JSON payload...</p>
-    </div>
-
-    <div class="error-box hidden" id="errorBox">
-
-    </div>
-
-    <select id="classSelect" disabled>
-      <option value="">CLASS_SEC</option>
+    <!-- সেলেক্ট বক্স -->
+    <select class="select-box">
+      <option value="" disabled selected>SELECT CLASS</option>
     </select>
 
-    <select id="studentSelect" disabled>
-      <option value="">STUDENTS_NAME</option>
+    <select class="select-box">
+      <option value="" disabled selected>STUDENTS_NAME</option>
     </select>
 
-    <button id="viewResultBtn" disabled>View Result</button>
-
+    <!-- বাটন -->
+    <button class="btn-result">View Result</button>
   </div>
-
-
-  <!-- =========================
-       RESULT CARD
-  ========================== -->
-
-  <div class="result-wrapper hidden" id="resultWrapper">
-
-    <div class="marksheet" id="marksheet">
-
-      <!-- HEADER -->
-      <div class="top-header">
-
-        <div class="header-logo-row">
-
-          <img
-            src="Logo_Jagat.png"
-            alt="Logo"
-            class="marksheet-logo"
-          >
-
-          <div class="header-center">
-
-            <h1>SHRIPUR KINDERGARTEN SCHOOL</h1>
-
-            <h2>2<sup>Nd</sup> Summative Evaluation - 2026</h2>
-
-            <h3>PROGRESS REPORT</h3>
-
-          </div>
-
-
-          <img src="Images/qr.png" alt="QR Code" class="marksheet-logo">
-
-        </div>
-
-      </div>
-
-      <!-- STUDENT DETAILS + GRADING TABLE (SIDE BY SIDE) -->
-      <div class="top-info-row">
-
-        <div class="student-section">
-
-          <table class="student-table">
-
-            <tr>
-              <td>Student's Name</td>
-              <td id="studentName"></td>
-            </tr>
-
-            <tr>
-              <td>Guardian's Name</td>
-              <td id="fatherName"></td>
-            </tr>
-
-            <tr>
-              <td>Class &amp; Section</td>
-              <td id="studentClass"></td>
-            </tr>
-
-            <tr>
-              <td>Roll Number</td>
-              <td id="rollNumber"></td>
-            </tr>
-
-          </table>
-
-        </div>
-
-        <div class="grading-section">
-
-          <div class="grading-title">Letter Grading</div>
-
-          <table class="grading-table">
-
-            <thead>
-              <tr>
-                <th>Range</th>
-                <th>Grade</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr><td>90-100</td><td>AA</td></tr>
-              <tr><td>80-89</td><td>A+</td></tr>
-              <tr><td>60-79</td><td>A</td></tr>
-              <tr><td>45-59</td><td>B+</td></tr>
-              <tr><td>35-44</td><td>B</td></tr>
-              <tr><td>25-34</td><td>C</td></tr>
-              <tr><td>Below 25</td><td>D</td></tr>
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </div>
-
-      <!-- SUBJECT TABLE -->
-      <div class="assessment-title">Assessment of Academic Areas</div>
-
-      <table class="result-table">
-
-        <thead>
-
-          <tr>
-            <th rowspan="2">Compulsory Subject</th>
-            <th colspan="3">Full Marks</th>
-            <th colspan="5">Obtained Marks</th>
-          </tr>
-
-          <tr>
-            <th>Written</th>
-            <th>Oral</th>
-            <th>Total</th>
-            <th>Written</th>
-            <th>Oral</th>
-            <th>Total</th>
-            <th>%</th>
-            <th>Grade</th>
-          </tr>
-
-        </thead>
-
-        <tbody id="subjectTableBody"></tbody>
-
-      </table>
-
-      <!-- FINAL RESULT -->
-      <div class="final-summary">
-
-        <table>
-
-          <tr>
-            <th>Art</th>
-            <th>FM</th>
-            <th>Obt. Marks</th>
-            <th>%</th>
-            <th>Result</th>
-            <th>Grade</th>
-            <th>Rank</th>
-          </tr>
-
-          <tr>
-            <td>A<sup>+</sup></td>
-            <td id="grandFullMarks"></td>
-            <td id="grandTotal" class="obt-cell"></td>
-            <td id="grandPercentage"></td>
-            <td>Pass</td>  
-            <td id="grandGrade"></td>
-            <td id="grandRank"></td>
-          </tr>
-
-        </table>
-
-      </div>
-
-      <!-- VERIFIED -->
-      <div class="verified-note">
-        ✅ Verified by- SHRIPUR KINDERGARTEN SCHOOL
-      </div>
-
-      <!-- SIGNATURE -->
-
-      <div class="signature-area">
-
-        <!-- Class Teacher -->
-        <div class="sign-col">
-          <img id="classTeacherSign" src="" alt="Class Teacher Sign" class="sign-img">
-          <div class="sign-label">Class Teacher</div>
-        </div>
-
-        <!-- Jagat Infrastructure & Algorithm -->
-        <div class="sign-col">
-          <img src="Images/jagatinfras.png" alt="Jagat Sign" class="sign-img">
-          <div class="sign-label">Jagat Infrastructure & Algorithm</div>
-        </div>
-
-        <!-- Principal -->
-        <div class="sign-col">
-          <img src="Images/principal.png" alt="Principal Sign" class="sign-img">
-          <div class="sign-label">Principal</div>
-        </div>
-
-      </div>
-
-      <!-- ACTION BUTTONS -->
-      <div class="action-buttons">
-
-        <button onclick="window.print()">🖨️ Print</button>
-
-        <button onclick="downloadPDF()">⬇️ Download PDF</button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <script src="script.js"></script>
 
 </body>
-
 </html>
