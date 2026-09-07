@@ -1,7 +1,7 @@
 /* ============================================================
    SHRIPUR KINDERGARTEN SCHOOL — Result Portal CSS
    Jagat Infrastructure & Algorithm
-   (Mint-Green & Maroon Vintage Progress Report Theme)
+   (Enhanced Multi-Gradient Vintage Progress Report Theme)
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap');
@@ -13,30 +13,35 @@
   font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-body {
-  background: #f0f7f3;
-  padding: 20px;
-  color: #1e3a2b;
-}
-
 :root {
-  /* মার্কশিট থিমের মূল রঙসমূহ */
-  --gold: #c59b27;
-  --gold-light: #e0c068;
-  --maroon: #851d1d;
-  --maroon-dark: #611313;
-  --mint-header: #dcebe1;
-  --mint-bg: #edf5ef;
-  --mint-light: #fafdfb;
-  --btn-mint: #b8e3da;
-  --btn-mint-hover: #a2d8cd;
+  /* গ্রাডিয়েন্ট ও মেটালিক কালার প্যালেট */
+  --gold-grad: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+  --gold-border: #c59b27;
+  
+  --maroon-grad: linear-gradient(135deg, #851d1d 0%, #a32424 50%, #611313 100%);
+  --maroon-grad-hover: linear-gradient(135deg, #611313 0%, #851d1d 50%, #420a0a 100%);
+  
+  --mint-header-grad: linear-gradient(180deg, #ebf5ee 0%, #cce4d4 100%);
+  --mint-bg-grad: linear-gradient(180deg, #f7faf8 0%, #ebf4ee 100%);
+  --mint-card-grad: linear-gradient(135deg, #ffffff 0%, #f4f9f5 100%);
+  
+  --btn-mint-grad: linear-gradient(135deg, #c3ebe1 0%, #9dd4c8 100%);
+  --btn-mint-hover-grad: linear-gradient(135deg, #a8dfd3 0%, #83c6b8 100%);
+  
   --text-dark: #1e3a2b;
   --text-black: #111111;
   --border-color: #3b5e48;
 }
 
+body {
+  background: linear-gradient(135deg, #e8f3ed 0%, #f4f9f6 50%, #dfede4 100%);
+  min-height: 100vh;
+  padding: 20px;
+  color: var(--text-dark);
+}
+
 /* =========================
-   PORTAL LOGO (90px)
+   PORTAL LOGO (Metallic Gold Ring)
 ========================= */
 
 .portal-logo {
@@ -45,45 +50,51 @@ body {
   object-fit: contain;
   border-radius: 50%;
   margin-bottom: 15px;
-  border: 3px solid var(--gold);
+  border: 3px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box, var(--gold-grad) border-box;
   padding: 4px;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 /* =========================
-   PORTAL (SEARCH AREA)
+   PORTAL (SEARCH AREA CARD)
 ========================= */
 
 .portal-container {
   width: 100%;
   max-width: 500px;
-  margin: auto;
+  margin: 30px auto;
   text-align: center;
-  margin-top: 40px;
+  padding: 30px;
+  background: var(--mint-card-grad);
+  border-radius: 16px;
+  border: 1px solid rgba(59, 94, 72, 0.2);
+  box-shadow: 0 10px 30px rgba(30, 58, 43, 0.08);
 }
 
 .portal-container h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   color: var(--text-dark);
-  margin-bottom: 8px;
-  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
 }
 
 .portal-container h2 {
   font-size: 14px;
-  color: var(--gold);
-  font-weight: 600;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
   margin-bottom: 8px;
 }
 
 .portal-container h3 {
-  font-size: 18px;
-  color: #445544;
+  font-size: 17px;
+  color: #3d5948;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 /* =========================
@@ -102,10 +113,10 @@ body {
 }
 
 .loader {
-  width: 36px;
-  height: 36px;
-  border: 4px solid #cdd6e0;
-  border-top-color: var(--maroon);
+  width: 38px;
+  height: 38px;
+  border: 4px solid #d3e2d7;
+  border-top: 4px solid #851d1d;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -119,14 +130,15 @@ body {
 ========================= */
 
 .error-box {
-  background: #fff;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%);
   border: 2px solid #e06060;
-  color: #c00;
+  color: #b71c1c;
   border-radius: 10px;
   padding: 14px;
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(224, 96, 96, 0.15);
 }
 
 /* =========================
@@ -135,22 +147,24 @@ body {
 
 .portal-container select {
   width: 100%;
-  height: 55px;
+  height: 52px;
   margin-bottom: 20px;
   border-radius: 10px;
-  border: 2px solid var(--mint-header);
-  font-size: 17px;
+  border: 2px solid #b3d4c0;
+  font-size: 16px;
   font-weight: bold;
   text-align: center;
   color: var(--text-dark);
-  background: #fff;
+  background: #ffffff;
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
 }
 
 .portal-container select:focus {
   outline: none;
-  border-color: var(--gold);
+  border-color: var(--gold-border);
+  box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.25);
 }
 
 .portal-container select:disabled {
@@ -158,29 +172,32 @@ body {
   cursor: not-allowed;
 }
 
-/* View Result বাটনকে দৃশ্যমান ও আকর্ষণীয় মারুন রঙের করা হয়েছে */
+/* View Result বাটন - ডিপ মারুন গ্রাডিয়েন্ট */
 .portal-container button {
   width: 100%;
-  height: 55px;
+  height: 52px;
   border: none;
   border-radius: 10px;
-  background: var(--maroon);
+  background: var(--maroon-grad);
   color: #ffffff;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-  box-shadow: 0 4px 12px rgba(133, 29, 29, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(133, 29, 29, 0.35);
 }
 
 .portal-container button:hover:not(:disabled) {
-  background: var(--maroon-dark);
+  background: var(--maroon-grad-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(133, 29, 29, 0.45);
 }
 
 .portal-container button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 /* =========================
@@ -192,7 +209,7 @@ body {
 }
 
 /* =========================
-   RESULT WRAPPER
+   RESULT WRAPPER & MARKSHEET
 ========================= */
 
 .result-wrapper {
@@ -205,21 +222,21 @@ body {
   margin: auto;
   padding: 18mm;
   color: var(--text-dark);
-  border: 2px solid var(--gold);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1), inset 0 0 0 5px #fff;
+  border: 2px solid var(--gold-border);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.12), inset 0 0 0 5px #ffffff;
 
-  /* 4-corner decorative brackets in Gold */
+  /* 4-Corner Decorative Brackets + Soft Radial Gradient Frame Background */
   background-repeat: no-repeat;
   background-image:
-    linear-gradient(var(--gold), var(--gold)), /* TL horizontal */
-    linear-gradient(var(--gold), var(--gold)), /* TL vertical */
-    linear-gradient(var(--gold), var(--gold)), /* TR horizontal */
-    linear-gradient(var(--gold), var(--gold)), /* TR vertical */
-    linear-gradient(var(--gold), var(--gold)), /* BL horizontal */
-    linear-gradient(var(--gold), var(--gold)), /* BL vertical */
-    linear-gradient(var(--gold), var(--gold)), /* BR horizontal */
-    linear-gradient(var(--gold), var(--gold)), /* BR vertical */
-    radial-gradient(ellipse at top left, #ffffff 0%, #faf8f3 60%, #eaf3ec 100%); /* card fill */
+    linear-gradient(var(--gold-border), var(--gold-border)),
+    linear-gradient(var(--gold-border), var(--gold-border)),
+    linear-gradient(var(--gold-border), var(--gold-border)),
+    linear-gradient(var(--gold-border), var(--gold-border)),
+    linear-gradient(var(--gold-border), var(--gold-border)),
+    linear-gradient(var(--gold-border), var(--gold-border)),
+    linear-gradient(var(--gold-border), var(--gold-border)),
+    linear-gradient(var(--gold-border), var(--gold-border)),
+    radial-gradient(circle at top left, #ffffff 0%, #faf8f3 50%, #edf5ef 100%);
   background-size:
     42px 3px, 3px 42px,
     42px 3px, 3px 42px,
@@ -247,7 +264,7 @@ body {
   padding-bottom: 12px;
   margin-bottom: 6px;
   width: 100%;
-  border-bottom: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold-border);
 }
 
 .header-logo-row {
@@ -264,8 +281,8 @@ body {
   object-fit: contain;
   flex-shrink: 0;
   border-radius: 50%;
-  border: 2px solid var(--gold);
-  background: #fff;
+  border: 2px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box, var(--gold-grad) border-box;
   padding: 2px;
 }
 
@@ -273,7 +290,7 @@ body {
   width: 56px;
   height: 56px;
   border-radius: 4px;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--gold-border);
   padding: 2px;
   background: #fff;
   flex-shrink: 0;
@@ -316,11 +333,11 @@ body {
 .header-center h2::before,
 .header-center h2::after {
   content: "❦";
-  color: var(--gold);
+  color: var(--gold-border);
   margin: 0 8px;
 }
 
-/* PROGRESS REPORT মারুন রিবন */
+/* PROGRESS REPORT মারুন গ্রাডিয়েন্ট রিবন */
 .header-center h3 {
   display: inline-block;
   margin: 6px auto 0 auto;
@@ -328,12 +345,12 @@ body {
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 2px;
-  color: #fff;
-  background: linear-gradient(180deg, var(--maroon), var(--maroon-dark));
+  color: #ffffff;
+  background: var(--maroon-grad);
   padding: 6px 28px;
   clip-path: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0% 50%);
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
 }
 
 /* =========================
@@ -370,7 +387,7 @@ body {
 .student-table td:first-child {
   font-weight: bold;
   width: 40%;
-  background: var(--mint-header);
+  background: var(--mint-header-grad);
   color: var(--text-dark);
   font-size: 14px;
 }
@@ -385,7 +402,7 @@ body {
   font-size: 9px;
   font-weight: bold;
   color: var(--text-dark);
-  background: var(--mint-header);
+  background: var(--mint-header-grad);
   border: 1px solid var(--border-color);
   border-bottom: none;
   padding: 4px;
@@ -412,7 +429,7 @@ body {
 }
 
 .grading-table th {
-  background: var(--mint-header);
+  background: var(--mint-header-grad);
   color: var(--text-dark);
   font-weight: bold;
 }
@@ -435,12 +452,12 @@ body {
 .assessment-title::before,
 .assessment-title::after {
   content: "〜";
-  color: var(--gold);
+  color: var(--gold-border);
   margin: 0 8px;
 }
 
 /* =========================
-   RESULT TABLE (Mint Green Theme)
+   RESULT TABLE (Gradient Mint Theme)
 ========================= */
 
 .result-table {
@@ -455,12 +472,12 @@ body {
   padding: 8px 6px;
   text-align: center;
   font-size: 13px;
-  background: var(--mint-bg);
+  background: var(--mint-bg-grad);
   color: var(--text-black);
 }
 
 .result-table th {
-  background: var(--mint-header);
+  background: var(--mint-header-grad);
   color: var(--text-dark);
   font-weight: 800;
   font-size: 13px;
@@ -521,14 +538,14 @@ body {
 }
 
 .final-summary th {
-  background: var(--mint-header);
+  background: var(--mint-header-grad);
   color: var(--text-dark);
 }
 
 .final-summary td {
   font-size: 15px;
   color: var(--text-black);
-  background: var(--mint-bg);
+  background: var(--mint-bg-grad);
   font-weight: 800;
 }
 
@@ -543,13 +560,15 @@ body {
 
 .verified-note {
   margin-top: 14px;
-  padding: 6px;
-  background: var(--mint-header);
-  border-radius: 4px;
+  padding: 8px;
+  background: var(--mint-header-grad);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
   text-align: center;
   color: var(--text-dark);
   font-weight: bold;
   font-size: 13px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
 
 .verified-note::before {
@@ -604,20 +623,22 @@ body {
 }
 
 .action-buttons button {
-  padding: 10px 24px;
+  padding: 12px 28px;
   border: 1px solid #8ec4b8;
-  border-radius: 8px;
-  background: var(--btn-mint);
+  border-radius: 10px;
+  background: var(--btn-mint-grad);
   color: var(--text-dark);
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .action-buttons button:hover {
-  background: var(--btn-mint-hover);
+  background: var(--btn-mint-hover-grad);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
 /* =========================
@@ -631,13 +652,13 @@ body {
 
 @media print {
   body {
-    background: #fff;
+    background: #ffffff !important;
     padding: 0;
   }
 
   .portal-container,
   .action-buttons {
-    display: none;
+    display: none !important;
   }
 
   .marksheet {
@@ -647,5 +668,6 @@ body {
     box-shadow: none;
     border: none;
     page-break-inside: avoid;
+    background-image: none !important;
   }
 }
