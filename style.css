@@ -541,3 +541,20 @@ body {
   .result-table tr:last-child td {
     background-color: #faf5e8 !important;
   }
+
+
+
+.marksheet-table th:nth-child(8),
+.marksheet-table td:nth-child(8) {
+  border-right: 2.5px solid #801b1b !important; /* গাঢ় মারুন রঙের ডানদিকের ভার্টিক্যাল লাইন */
+}
+
+  
+.marksheet-table td:nth-child(5),
+.marksheet-table td:nth-child(6),
+.marksheet-table td:nth-child(7),
+.marksheet-table td:nth-child(8) {
+  background-color: #f2f7f5 !important;
+  color: #000000 !important;      
+  font-weight: 700 !important;  
+}
