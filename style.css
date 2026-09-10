@@ -1,0 +1,524 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+:root {
+  --gold-text: #816d3b;
+  --gold-border: #9e8952;
+  --mint-bg: #dcece5;
+  --mint-light: #e8f3ed;
+  --table-border: #a2bca8;
+  --text-dark: #122117;
+  --text-black: #000000;
+  --maroon: #801b1b;
+  --obt-dark: #1a3d2a;
+}
+
+body {
+  background: radial-gradient(circle at 50% 50%, #f0f7f2 0%, #d8ebd2 100%);
+  padding: 15px 8px;
+  min-height: 100vh;
+  color: var(--text-dark);
+}
+
+.portal-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 15px auto;
+  text-align: center;
+  background: #ffffff;
+  padding: 15px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(158, 137, 82, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.portal-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 4px;
+}
+
+.portal-container h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gold-text);
+}
+
+.portal-container h2 {
+  font-size: 10px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.portal-container h3 {
+  font-size: 11px;
+  color: var(--gold-text);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.portal-container select {
+  width: 100%;
+  height: 36px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--table-border);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-dark);
+  outline: none;
+}
+
+.portal-container button {
+  width: 100%;
+  height: 36px;
+  border: none;
+  border-radius: 5px;
+  background: var(--maroon);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.portal-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loader-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-top-color: var(--maroon);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-box {
+  background: #fde8e8;
+  color: #9b1c1c;
+  padding: 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.result-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.marksheet {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 42px 35px 30px 35px;
+  background-image: url('Images/bg.png') !important;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color: var(--text-black);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.top-header {
+  margin-bottom: 6px;
+}
+
+.header-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.marksheet-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.header-center {
+  flex: 1;
+  text-align: center;
+  padding: 0 5px;
+}
+
+.header-center h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--maroon);
+  letter-spacing: 0.3px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.header-center h2 {
+  font-size: 10.5px;
+  color: var(--text-dark);
+  font-weight: 700;
+  margin: 2px 0;
+}
+
+.header-center h2::before,
+.header-center h2::after {
+  content: " ❦ ";
+  color: var(--gold-text);
+}
+
+.header-center h3 {
+  display: inline-block;
+  background: linear-gradient(180deg, #d8a84e 0%, #b88628 100%);
+  color: #000000;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2.5px 22px;
+  letter-spacing: 1px;
+  margin-top: 3px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.top-info-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  align-items: stretch;
+}
+
+.student-section {
+  flex: 1;
+}
+
+.student-table,
+.grading-table,
+.result-table,
+.final-summary table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.student-table td {
+  border: 1px solid var(--table-border);
+  padding: 3px 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #000;
+  background: #ffffff;
+}
+
+.student-table td:first-child {
+  width: 38%;
+  background: var(--mint-bg);
+  color: var(--text-dark);
+}
+
+.grading-section {
+  width: 115px;
+  flex-shrink: 0;
+}
+
+.grading-title {
+  text-align: center;
+  font-size: 7.5px;
+  font-weight: 800;
+  color: var(--text-dark);
+  background: var(--mint-bg);
+  border: 1px solid var(--table-border);
+  border-bottom: none;
+  padding: 1px;
+  text-transform: uppercase;
+}
+
+.grading-table th,
+.grading-table td {
+  border: 1px solid var(--table-border);
+  padding: 1px;
+  font-size: 7.5px;
+  text-align: center;
+  font-weight: 700;
+  color: #000;
+  background: #ffffff;
+}
+
+.grading-table th {
+  background: var(--mint-bg);
+  color: var(--text-dark);
+}
+
+.assessment-title {
+  margin: 8px 0 4px 0;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.assessment-title::before,
+.assessment-title::after {
+  content: " 〜 ";
+  color: var(--gold-text);
+}
+
+.table-responsive {
+  width: 100%;
+}
+
+.result-table th,
+.result-table td {
+  border: 1.2px solid var(--table-border);
+  padding: 3px 2px;
+  text-align: center;
+  font-size: 9.5px;
+  color: #000;
+  background: #ffffff;
+}
+
+.result-table th {
+  background: var(--mint-bg);
+  color: var(--text-dark);
+  font-weight: 800;
+}
+
+.result-table td:first-child {
+  text-align: left;
+  padding-left: 6px;
+  font-weight: 700;
+  color: var(--text-dark);
+  white-space: nowrap;
+  width: 26%;
+  background: #fafafa;
+}
+
+.result-table th.spacer-col,
+.result-table td.spacer-col {
+  width: 12px;
+  padding: 0;
+  border-left: 2px solid var(--gold-border);
+  border-right: 1px solid #e0e0e0;
+  background: linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  font-size: 0;
+}
+
+.result-table td.obt-cell {
+  font-weight: 900;
+  font-size: 11px;
+  color: var(--obt-dark);
+  background: linear-gradient(180deg, #f0f7f2 0%, #ffffff 100%);
+  letter-spacing: 0.3px;
+}
+
+.final-summary {
+  margin-top: 6px;
+}
+
+.final-summary th {
+  background: var(--mint-bg);
+  color: var(--text-dark);
+  font-weight: 800;
+  font-size: 9px;
+  padding: 3px 2px;
+  border: 1.2px solid var(--table-border);
+}
+
+.final-summary td {
+  background: #ffffff;
+  color: #000;
+  font-weight: 800;
+  font-size: 10px;
+  padding: 3px 2px;
+  border: 1.2px solid var(--table-border);
+  text-align: center;
+}
+
+.final-summary td.obt-cell {
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--obt-dark);
+}
+
+.verified-note {
+  margin-top: 6px;
+  padding: 2.5px;
+  background: var(--mint-bg);
+  border: 1.2px solid var(--table-border);
+  border-radius: 3px;
+  text-align: center;
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 9px;
+}
+
+.signature-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.sign-col {
+  flex: 1;
+  text-align: center;
+}
+
+.sign-img {
+  height: 20px;
+  max-width: 75px;
+  object-fit: contain;
+  margin: 0 auto -2px auto;
+  display: block;
+}
+
+.sign-label {
+  border-top: 1px solid #000000;
+  padding-top: 2px;
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.action-buttons button {
+  padding: 6px 14px;
+  border: 1px solid #82bda5;
+  border-radius: 5px;
+  background: #c3e2d5;
+  color: #103322;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .marksheet {
+    padding: 35px 20px 22px 20px;
+  }
+
+  .header-center h1 {
+    font-size: 13.5px;
+  }
+
+  .header-center h2 {
+    font-size: 8.5px;
+  }
+
+  .header-center h3 {
+    font-size: 8.5px;
+    padding: 1.5px 12px;
+  }
+
+  .marksheet-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .student-table td {
+    font-size: 8.5px;
+    padding: 2px 3px;
+  }
+
+  .grading-section {
+    width: 95px;
+  }
+
+  .grading-title,
+  .grading-table th,
+  .grading-table td {
+    font-size: 6px;
+    padding: 0.5px;
+  }
+
+  .result-table th,
+  .result-table td,
+  .final-summary th,
+  .final-summary td {
+    font-size: 7.5px;
+    padding: 1.5px 1px;
+  }
+
+  .result-table td.obt-cell {
+    font-size: 9px;
+  }
+
+  .sign-img {
+    height: 16px;
+  }
+
+  .sign-label {
+    font-size: 6.5px;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    padding: 0;
+  }
+
+  .portal-container,
+  .action-buttons {
+    display: none !important;
+  }
+
+  .marksheet {
+    box-shadow: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 42px 35px 30px 35px !important;
+    background-image: url('Images/bg.png') !important;
+    background-size: 100% 100% !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  .result-table td.obt-cell {
+    font-size: 11.5px;
+    font-weight: 900;
+  }
+}
