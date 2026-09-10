@@ -482,3 +482,47 @@ body {
     print-color-adjust: exact !important;
   }
 }
+
+
+
+
+@media print {
+    /* A4 সাইজ ও মার্জিন নির্ধারণ */
+    @page {
+        size: A4 portrait;
+        margin: 10mm; /* অফিশিয়াল পেজ মার্জিন */
+    }
+
+    /* স্ক্রিনের ব্যাকগ্রাউন্ড ও প্যাডিং তুলে দেওয়া */
+    body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* বাইরের কন্টেইনার ও শ্যাডো হাইড করা */
+    .container, .wrapper, body > div {
+        background: transparent !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* রেজাল্ট কার্ডটি ১টি A4 পাতায় লক করা */
+    .report-card, #result-area {
+        width: 100% !important;
+        border: 2px solid #1a365d !important;
+        padding: 10mm !important;
+        box-sizing: border-box !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* অপছন্দনীয় অংশ (যেমন: ওয়েবসাইট লিংক বা বাটন) লুকানো */
+    .no-print, header, footer, button {
+        display: none !important;
+    }
+}
