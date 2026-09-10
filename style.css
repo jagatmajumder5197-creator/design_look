@@ -526,3 +526,122 @@ body {
         display: none !important;
     }
 }
+
+
+/* ===================================================
+   A4 OFFICIAL PRINT OPTIMIZED STYLESHEET
+   (স্পষ্ট ফন্ট, পর্যাপ্ত স্পেস ও গাঢ় টেবিল বর্ডার)
+=================================================== */
+
+@media print {
+    /* পেজ ও মার্জিন সেটআপ */
+    @page {
+        size: A4 portrait;
+        margin: 12mm 15mm; /* পেজের চারপাশে পরিচ্ছন্ন ফাঁকা জায়গা */
+    }
+
+    /* ফন্ট ও কালার কনট্রাস্ট উন্নয়ন */
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif !important;
+        color: #000000 !important; /* শতভাগ স্পষ্ট কালো টেক্সট */
+        background: #ffffff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* রেজাল্ট কার্ড কন্টেইনার */
+    .report-card, .container {
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        border: 2px solid #000000 !important; /* পরিচ্ছন্ন গাঢ় আউটলাইন */
+        box-shadow: none !important;
+    }
+
+    /* ১. শিরোনাম ও হেডার ফন্ট সাইজ */
+    .school-name {
+        font-size: 20pt !important;
+        font-weight: 800 !important;
+        color: #1a365d !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .exam-title, .section-title {
+        font-size: 12pt !important;
+        font-weight: 700 !important;
+        color: #2d3748 !important;
+    }
+
+    /* ২. স্টুডেন্ট ইনফরমেশন টেবিল */
+    table.info-table {
+        width: 100% !important;
+        font-size: 10.5pt !important;
+        line-height: 1.4 !important;
+        border-collapse: collapse !important;
+    }
+
+    table.info-table td {
+        padding: 6px 10px !important; /* লেখার চারপাশে সুন্দর স্পেসিং */
+        border: 1px solid #4a5568 !important;
+    }
+
+    table.info-table td.label {
+        font-weight: 700 !important;
+        background-color: #edf2f7 !important; /* হালকা ধূসর ব্যাকগ্রাউন্ড */
+        color: #1a202c !important;
+    }
+
+    /* ৩. মূল মার্কস টেবিল স্পষ্টীকরণ */
+    table.marks-table, table.summary-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin-top: 12px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* টেবিল হেডার স্টাইল (স্পষ্ট ও গাঢ়) */
+    table.marks-table th, table.summary-table th {
+        background-color: #1a365d !important; /* গাঢ় ব্লু হেডার */
+        color: #ffffff !important;
+        font-size: 10pt !important;
+        font-weight: bold !important;
+        padding: 8px 4px !important; /* লেখা যেন গ্যাঁথাগেঁথি না হয় */
+        border: 1px solid #000000 !important;
+        text-align: center !important;
+    }
+
+    /* টেবিল ডেটা সেলের ফন্ট ও স্পেসিং */
+    table.marks-table td, table.summary-table td {
+        font-size: 10.5pt !important;
+        font-weight: 600 !important; /* নম্বর ও গ্রেডগুলো বোল্ড রাখার জন্য */
+        padding: 7px 5px !important; /* উল্লম্ব ও অনুভূমিক পরিমিত জায়গা */
+        border: 1px solid #2d3748 !important; /* স্পষ্ট কন্টুর বর্ডার */
+        text-align: center !important;
+        color: #000000 !important;
+    }
+
+    /* সাবজেক্ট নাম লেফট-এলাইন ও বোল্ড */
+    table.marks-table td.subject-name {
+        text-align: left !important;
+        padding-left: 10px !important;
+        font-weight: 700 !important;
+    }
+
+    /* সারিগুলোর অল্টারনেটিং ব্যাকগ্রাউন্ড (পড়ার সুবিধার্থে) */
+    table.marks-table tr:nth-child(even) {
+        background-color: #f7fafc !important;
+    }
+
+    /* ৪. স্বাক্ষর ও ফুটারের জায়গা */
+    .sig-table {
+        margin-top: 35px !important;
+        font-size: 10pt !important;
+        font-weight: bold !important;
+    }
+
+    /* পেজ ব্রেক রোধ করা */
+    tr, td, th {
+        page-break-inside: avoid !important;
+    }
+}
