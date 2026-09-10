@@ -172,7 +172,7 @@ body {
 .top-header {
   margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 3px solid #b88628;
+  border-bottom: 3px solid #0cc;
 }
 
 .header-logo-row {
@@ -531,4 +531,13 @@ body {
   tr {
     page-break-inside: avoid !important;
   }
-}
+.marksheet-table td,
+  .summary-table td,
+  .result-table td {
+    color: #000 !important;
+    font-weight: 700 !important;
+  }
+.summary-table tr:last-child td,
+  .result-table tr:last-child td {
+    background-color: #faf5e8 !important;
+  }
