@@ -172,7 +172,7 @@ body {
 .top-header {
   margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 3px solid #0cc;
+  border-bottom: 5px solid #0052cc !important;
 }
 
 .header-logo-row {
@@ -231,7 +231,7 @@ body {
   margin-top: 5px;
   border-radius: 2px;
   box-shadow: none !important;
-  border-bottom: 5px solid #0052cc !important;
+  border-bottom: none !important;
 }
 
 .top-info-row {
