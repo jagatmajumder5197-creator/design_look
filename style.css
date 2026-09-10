@@ -546,7 +546,7 @@ body {
 
 .marksheet-table th:nth-child(8),
 .marksheet-table td:nth-child(8) {
-  border-right: 2.5px solid #801b1b !important; /* গাঢ় মারুন রঙের ডানদিকের ভার্টিক্যাল লাইন */
+  border-right: 2.5px solid #801b1b !important;
 }
 
   
@@ -557,4 +557,25 @@ body {
   background-color: #f2f7f5 !important;
   color: #000000 !important;      
   font-weight: 700 !important;  
+}
+
+
+
+table:nth-of-type(2) th,
+.summary-table th {
+  background-color: #dbece5 !important; 
+  color: #0f3822 !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  padding: 8px 6px !important;
+}
+
+
+table:nth-of-type(2) td,
+.summary-table td {
+  background-color: #f0f7f3 !important;
+  color: #000000 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  padding: 10px 8px !important;
 }
