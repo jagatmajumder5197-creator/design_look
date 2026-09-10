@@ -332,10 +332,15 @@ body {
 }
 
 /* Assessment Marks Table Styles */
+.result-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
 .result-table th,
 .result-table td {
   border: 1px solid var(--table-border);
-  padding: 6px 8px;
+  padding: 5px 2px;
   text-align: center;
   font-size: 12px;
   color: var(--text-black);
@@ -347,47 +352,72 @@ body {
   background: var(--mint-bg);
   color: var(--text-dark);
   font-weight: 600;
-  padding: 7px 8px;
-  font-size: 12px;
 }
 
-.result-table td:first-child {
+/* Subject & Full Marks কলামের সাইজ সংকুচিত করা হলো */
+.result-table td:first-child,
+.result-table th.subject-header {
+  width: 18% !important;
   text-align: left;
-  padding-left: 10px;
+  padding-left: 6px;
   font-weight: 600;
-  color: var(--text-dark);
   white-space: nowrap;
-  width: 26%;
-  background: #ffffff;
 }
 
-/* Full Marks এবং Obtained Marks-এর মাঝখানের স্পেসার ডিভাইডার */
+.result-table th:nth-child(2),
+.result-table th:nth-child(3),
+.result-table th:nth-child(4),
+.result-table td:nth-child(2),
+.result-table td:nth-child(3),
+.result-table td:nth-child(4) {
+  width: 8% !important;
+}
+
+/* মাঝে ২টি পাতলা সমান্তরাল মারুন লাইন (Parallel Lines) */
 .result-table .spacer-col {
-  width: 3px !important;
+  width: 6px !important;
   padding: 0 !important;
-  background-color: var(--maroon) !important;
-  border: none !important;
+  background-color: transparent !important;
+  border-left: 1.5px solid var(--maroon) !important;
+  border-right: 1.5px solid var(--maroon) !important;
+  border-top: none !important;
+  border-bottom: none !important;
 }
 
-/* Obtained Marks কলামের স্পষ্ট ও বোল্ড টেক্সট */
+/* Obtained Marks: উজ্জ্বল নীল রঙ, বড় ও স্পষ্ট টেক্সট */
 .result-table tbody td:nth-child(6),
 .result-table tbody td:nth-child(7),
 .result-table tbody td:nth-child(8),
 .result-table tbody td:nth-child(9),
 .result-table tbody td:nth-child(10) {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  color: #0040ff !important;
   font-weight: 700 !important;
+  font-size: 13.5px !important;
+  background-color: #ffffff !important;
 }
 
-/* Final Result Summary (Light Pink Theme) */
+.result-table tbody td:nth-child(6),
+.result-table tbody td:nth-child(7),
+.result-table tbody td:nth-child(8) {
+  width: 10% !important;
+}
+
+.result-table tbody td:nth-child(9) {
+  width: 14% !important;
+}
+
+.result-table tbody td:nth-child(10) {
+  width: 10% !important;
+}
+
+/* Final Result Summary (হালকা সবুজ হেডিং + হালকা হলুদ ডেটা রৈ) */
 .final-summary {
   margin: 14px 0;
 }
 
 .final-summary th {
-  background-color: #ffe6eb !important; /* হালকা পিঙ্ক হেডার */
-  color: var(--maroon) !important;      /* ডার্ক মারুন টেক্সট */
+  background-color: #d1e7dd !important; /* হালকা সবুজ ব্যাকগ্রাউন্ড */
+  color: #0f3822 !important;            /* ডার্ক টেক্সট */
   font-size: 13px !important;
   font-weight: 700 !important;
   padding: 8px 6px !important;
@@ -395,11 +425,11 @@ body {
 }
 
 .final-summary td {
-  background-color: #fff0f3 !important; /* সফ্ট পরিষ্কার পিঙ্ক ব্যাকগ্রাউন্ড */
-  color: #000000 !important;            /* সুনির্দিষ্ট কালো নম্বর */
+  background-color: #fff8d6 !important; /* হালকা হলুদ ব্যাকগ্রাউন্ড */
+  color: #000000 !important;            /* সুনির্দিষ্ট কালো নম্বর/টেক্সট */
   font-size: 15px !important;           /* স্পষ্ট ও বড় ফন্ট */
   font-weight: 800 !important;
-  padding: 10px 8px !important;
+  padding: 9px 6px !important;
   border: 1px solid var(--table-border) !important;
   text-align: center;
 }
