@@ -645,3 +645,101 @@ body {
         page-break-inside: avoid !important;
     }
 }
+
+
+
+/* ===================================================
+   A4 INK-SAVER & LARGE FONT PRINT CSS
+=================================================== */
+@media print {
+    /* ১. A4 পেজ সেটআপ ও মার্জিন কমিয়ে সর্বোচ্চ জায়গা তৈরি */
+    @page {
+        size: A4 portrait;
+        margin: 6mm;
+    }
+
+    /* ২. ড্রপডাউন, ভিউ বাটন ও প্রিন্ট বাটন সম্পূর্ণ হাইড করা */
+    select, button, .no-print, input, form, 
+    header, footer, nav,
+    div:has(> select), div:has(> button) {
+        display: none !important;
+    }
+
+    /* ৩. কালি বাঁচানোর জন্য ব্যাকগ্রাউন্ড কালার ও ডার্ক ফিল তুলে দেওয়া */
+    *, *::before, *::after {
+        background: transparent !important;
+        background-color: transparent !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* ৪. পুরো A4 পেজ জুড়ে ছড়িয়ে দেওয়া */
+    html, body {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .report-card, #result-card, .container, main {
+        width: 100% !important;
+        max-width: 100% !important;
+        border: 1.5px solid #000000 !important; /* কালি বাঁচাতে চিকন কালো বর্ডার */
+        padding: 12px !important;
+        box-sizing: border-box !important;
+        margin: 0 auto !important;
+    }
+
+    /* ৫. স্কুলের নাম ও শিরোনাম (বড় সাইজ কিন্তু বোল্ড ছাড়া) */
+    .school-name, h1, h2 {
+        font-size: 22pt !important;
+        font-weight: normal !important; /* কালি বাঁচাতে বোল্ড তুলে দেওয়া হয়েছে */
+        text-align: center !important;
+        margin-bottom: 4px !important;
+        letter-spacing: 1px;
+    }
+
+    .exam-title, .progress-badge {
+        font-size: 13pt !important;
+        font-weight: normal !important;
+        text-align: center !important;
+        border: 1px solid #000000 !important; /* গাঢ় ব্যাকগ্রাউন্ডের বদলে খালি বর্ডার */
+        padding: 2px 12px !important;
+        display: inline-block !important;
+    }
+
+    /* ৬. টেবিলের আকার ও ফন্ট বড় করা (নরমাল ওয়েট) */
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* ঘরগুলোর ফন্ট ৯-১০pt থেকে বাড়িয়ে ১২.৫pt করা হয়েছে */
+    th, td {
+        font-size: 12.5pt !important;
+        font-weight: normal !important; /* হালকা কালিতে বড় ও পরিষ্কার দেখাবে */
+        padding: 7px 5px !important; /* ঘরের ভেতরের স্পেস বাড়িয়ে টেবিলটি বড় করা */
+        border: 1px solid #333333 !important; /* চিকন বর্ডার */
+        text-align: center !important;
+    }
+
+    /* স্টুডেন্ট ইনফরমেশন টেবিল */
+    .info-table td {
+        font-size: 13pt !important;
+        padding: 8px 10px !important;
+        text-align: left !important;
+    }
+
+    .info-table td.label {
+        font-weight: 500 !important; /* হালকা স্পষ্ট করার জন্য */
+    }
+
+    /* স্বাক্ষর অংশ */
+    .sig-table {
+        margin-top: 35px !important;
+        font-size: 11.5pt !important;
+    }
+}
