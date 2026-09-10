@@ -83,10 +83,6 @@ body {
   color: var(--text-dark);
 }
 
-
-
-
-
 .portal-container select {
   outline: none;
   background: #ffffff;
@@ -172,7 +168,7 @@ body {
 .top-header {
   margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 5px solid #0052cc !important;
+  border-bottom: 3.5px solid #0052cc !important;
 }
 
 .header-logo-row {
@@ -335,6 +331,7 @@ body {
   overflow-x: auto;
 }
 
+/* Assessment Marks Table Styles */
 .result-table th,
 .result-table td {
   border: 1px solid var(--table-border);
@@ -355,11 +352,6 @@ body {
   font-size: 12px;
 }
 
-.result-table th.subject-header,
-.result-table th.section-header {
-  font-size: 12px;
-}
-
 .result-table td:first-child {
   text-align: left;
   padding-left: 10px;
@@ -374,39 +366,50 @@ body {
 .result-table td.spacer-col {
   width: 11px;
   padding: 0;
-  border-left: 2.5px solid var(--gold-border);
-  border-right: 1px solid #e8e8e8;
-  background: linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  border-left: 2.5px solid var(--maroon) !important;
+  border-right: 1px solid var(--table-border);
+  background: #ffffff;
   font-size: 0;
 }
 
-.result-table tbody td:nth-child(5) {
-  padding: 0;
+/* Obtained Marks section highlight & right vertical border */
+.result-table tbody td:nth-child(6),
+.result-table tbody td:nth-child(7),
+.result-table tbody td:nth-child(8),
+.result-table tbody td:nth-child(9),
+.result-table tbody td:nth-child(10) {
+  background-color: #f2f7f5 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
 }
 
+.result-table th:last-child,
+.result-table tbody td:nth-child(10) {
+  border-right: 2.5px solid var(--maroon) !important;
+}
+
+/* Final Summary Section */
 .final-summary {
   margin: 12px 0;
 }
 
 .final-summary th {
-  background: var(--mint-bg);
-  color: var(--text-dark);
-  font-weight: 600;
-  font-size: 12px;
-  padding: 7px 8px;
+  background-color: #dbece5 !important;
+  color: #0f3822 !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  padding: 8px 6px !important;
   border: 1px solid var(--table-border);
-  line-height: 1.3;
 }
 
 .final-summary td {
-  background: #ffffff;
-  color: var(--text-black);
-  font-weight: 500;
-  font-size: 12px;
-  padding: 6px 8px;
+  background-color: #f0f7f3 !important;
+  color: #000000 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  padding: 10px 8px !important;
   border: 1px solid var(--table-border);
   text-align: center;
-  line-height: 1.3;
 }
 
 .verified-note {
@@ -474,6 +477,7 @@ body {
   background: #b0dcc7;
 }
 
+/* Print Styles */
 @media print {
   @page {
     size: 210mm 297mm;
@@ -531,51 +535,4 @@ body {
   tr {
     page-break-inside: avoid !important;
   }
-.marksheet-table td,
-  .summary-table td,
-  .result-table td {
-    color: #000 !important;
-    font-weight: 700 !important;
-  }
-.summary-table tr:last-child td,
-  .result-table tr:last-child td {
-    background-color: #faf5e8 !important;
-  }
-
-
-
-.marksheet-table th:nth-child(8),
-.marksheet-table td:nth-child(8) {
-  border-right: 2.5px solid #801b1b !important;
-}
-
-  
-.marksheet-table td:nth-child(5),
-.marksheet-table td:nth-child(6),
-.marksheet-table td:nth-child(7),
-.marksheet-table td:nth-child(8) {
-  background-color: #f2f7f5 !important;
-  color: #000000 !important;      
-  font-weight: 700 !important;  
-}
-
-
-
-table:nth-of-type(2) th,
-.summary-table th {
-  background-color: #dbece5 !important; 
-  color: #0f3822 !important;
-  font-size: 13px !important;
-  font-weight: bold !important;
-  padding: 8px 6px !important;
-}
-
-
-table:nth-of-type(2) td,
-.summary-table td {
-  background-color: #f0f7f3 !important;
-  color: #000000 !important;
-  font-size: 15px !important;
-  font-weight: 800 !important;
-  padding: 10px 8px !important;
 }
