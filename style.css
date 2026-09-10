@@ -31,7 +31,7 @@ body {
 
 .portal-container {
   width: 100%;
-  max-width: 420px;
+  max-width: 520px;
   margin: 0 auto 25px auto;
   text-align: center;
   background: #ffffff;
@@ -73,15 +73,19 @@ body {
 .portal-container select,
 .portal-container button {
   width: 100%;
-  height: 38px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--table-border);
-  font-size: 13px;
-  font-weight: 500;
+  height: 48px; 
+  margin-bottom: 12px;
+  border-radius: 8px; 
+  border: 1.5px solid var(--table-border);
+  font-size: 15px; 
+  font-weight: 600; 
   text-align: center;
   color: var(--text-dark);
 }
+
+
+
+
 
 .portal-container select {
   outline: none;
