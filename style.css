@@ -338,7 +338,6 @@ body {
   padding: 6px 8px;
   text-align: center;
   font-size: 12px;
-  font-weight: 500;
   color: var(--text-black);
   background: #ffffff;
   line-height: 1.3;
@@ -359,56 +358,49 @@ body {
   color: var(--text-dark);
   white-space: nowrap;
   width: 26%;
-  background: #fafafa;
-}
-
-.result-table th.spacer-col,
-.result-table td.spacer-col {
-  width: 11px;
-  padding: 0;
-  border-left: 2.5px solid var(--maroon) !important;
-  border-right: 1px solid var(--table-border);
   background: #ffffff;
-  font-size: 0;
 }
 
-/* Obtained Marks section highlight & right vertical border */
+/* Full Marks এবং Obtained Marks-এর মাঝখানের স্পেসার ডিভাইডার */
+.result-table .spacer-col {
+  width: 3px !important;
+  padding: 0 !important;
+  background-color: var(--maroon) !important;
+  border: none !important;
+}
+
+/* Obtained Marks কলামের স্পষ্ট ও বোল্ড টেক্সট */
 .result-table tbody td:nth-child(6),
 .result-table tbody td:nth-child(7),
 .result-table tbody td:nth-child(8),
 .result-table tbody td:nth-child(9),
 .result-table tbody td:nth-child(10) {
-  background-color: #f2f7f5 !important;
+  background-color: #ffffff !important;
   color: #000000 !important;
   font-weight: 700 !important;
 }
 
-.result-table th:last-child,
-.result-table tbody td:nth-child(10) {
-  border-right: 2.5px solid var(--maroon) !important;
-}
-
-/* Final Summary Section */
+/* Final Result Summary (Light Pink Theme) */
 .final-summary {
-  margin: 12px 0;
+  margin: 14px 0;
 }
 
 .final-summary th {
-  background-color: #dbece5 !important;
-  color: #0f3822 !important;
+  background-color: #ffe6eb !important; /* হালকা পিঙ্ক হেডার */
+  color: var(--maroon) !important;      /* ডার্ক মারুন টেক্সট */
   font-size: 13px !important;
-  font-weight: bold !important;
+  font-weight: 700 !important;
   padding: 8px 6px !important;
-  border: 1px solid var(--table-border);
+  border: 1px solid var(--table-border) !important;
 }
 
 .final-summary td {
-  background-color: #f0f7f3 !important;
-  color: #000000 !important;
-  font-size: 15px !important;
+  background-color: #fff0f3 !important; /* সফ্ট পরিষ্কার পিঙ্ক ব্যাকগ্রাউন্ড */
+  color: #000000 !important;            /* সুনির্দিষ্ট কালো নম্বর */
+  font-size: 15px !important;           /* স্পষ্ট ও বড় ফন্ট */
   font-weight: 800 !important;
   padding: 10px 8px !important;
-  border: 1px solid var(--table-border);
+  border: 1px solid var(--table-border) !important;
   text-align: center;
 }
 
