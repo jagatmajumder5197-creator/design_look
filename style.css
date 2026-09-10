@@ -172,7 +172,7 @@ body {
 .top-header {
   margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 1.5px solid rgba(158, 137, 82, 0.2);
+  border-bottom: 3px solid #b88628;
 }
 
 .header-logo-row {
